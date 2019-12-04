@@ -5,20 +5,12 @@
     <link>https://by-liu.github.io/tags/sparse-coding/</link>
       <atom:link href="https://by-liu.github.io/tags/sparse-coding/index.xml" rel="self" type="application/rss+xml" />
     <description>sparse coding</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Nov 2014 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/img/icon-192.png</url>
       <title>sparse coding</title>
       <link>https://by-liu.github.io/tags/sparse-coding/</link>
     </image>
-    
-    <item>
-      <title>Learning representative and discriminative image representation by deep appearance and spatial coding</title>
-      <link>https://by-liu.github.io/publication/learning-image-representation/</link>
-      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/learning-image-representation/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Image Representation Learning by Deep Appearance and Spatial Coding</title>
@@ -41,14 +33,6 @@
       <link>https://by-liu.github.io/publication/adaptive-spatial-partition-learning/</link>
       <pubDate>Wed, 22 Oct 2014 00:00:00 +0000</pubDate>
       <guid>https://by-liu.github.io/publication/adaptive-spatial-partition-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Regularized Hierarchical Feature Learning with Non-negative Sparsity and Selectivity for Image Classification</title>
-      <link>https://by-liu.github.io/publication/regularized-feature-learning/</link>
-      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/regularized-feature-learning/</guid>
       <description></description>
     </item>
     

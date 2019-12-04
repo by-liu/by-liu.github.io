@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>unsupervised learning | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/tags/unsupervised-learning/</link>
+      <atom:link href="https://by-liu.github.io/tags/unsupervised-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>unsupervised learning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 01 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/img/icon-192.png</url>
+      <title>unsupervised learning</title>
+      <link>https://by-liu.github.io/tags/unsupervised-learning/</link>
+    </image>
+    
+    <item>
+      <title>Learning representative and discriminative image representation by deep appearance and spatial coding</title>
+      <link>https://by-liu.github.io/publication/learning-image-representation/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/learning-image-representation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularized Hierarchical Feature Learning with Non-negative Sparsity and Selectivity for Image Classification</title>
+      <link>https://by-liu.github.io/publication/regularized-feature-learning/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/regularized-feature-learning/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
