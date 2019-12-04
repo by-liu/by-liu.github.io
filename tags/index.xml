@@ -5,12 +5,52 @@
     <link>https://by-liu.github.io/tags/</link>
       <atom:link href="https://by-liu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Aug 2015 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/img/icon-192.png</url>
       <title>Tags</title>
       <link>https://by-liu.github.io/tags/</link>
     </image>
+    
+    <item>
+      <title>deep learning</title>
+      <link>https://by-liu.github.io/tags/deep-learning/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>image classification</title>
+      <link>https://by-liu.github.io/tags/image-classification/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/tags/image-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>object detection</title>
+      <link>https://by-liu.github.io/tags/object-detection/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/tags/object-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sparse coding</title>
+      <link>https://by-liu.github.io/tags/sparse-coding/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/tags/sparse-coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scene recognition</title>
+      <link>https://by-liu.github.io/tags/scene-recognition/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/tags/scene-recognition/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

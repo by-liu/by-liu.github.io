@@ -5,12 +5,36 @@
     <link>https://by-liu.github.io/publication_types/</link>
       <atom:link href="https://by-liu.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
     <description>Publication_types</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/img/icon-192.png</url>
       <title>Publication_types</title>
       <link>https://by-liu.github.io/publication_types/</link>
     </image>
+    
+    <item>
+      <title>3</title>
+      <link>https://by-liu.github.io/publication_types/3/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication_types/3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2</title>
+      <link>https://by-liu.github.io/publication_types/2/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication_types/2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>1</title>
+      <link>https://by-liu.github.io/publication_types/1/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication_types/1/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

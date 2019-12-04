@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>image classification | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/tags/image-classification/</link>
+      <atom:link href="https://by-liu.github.io/tags/image-classification/index.xml" rel="self" type="application/rss+xml" />
+    <description>image classification</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Aug 2015 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/img/icon-192.png</url>
+      <title>image classification</title>
+      <link>https://by-liu.github.io/tags/image-classification/</link>
+    </image>
+    
+    <item>
+      <title>Detection guided deconvolutional network for hierarchical feature learning</title>
+      <link>https://by-liu.github.io/publication/detection-guided-deconvolutional-network/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/detection-guided-deconvolutional-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learning representative and discriminative image representation by deep appearance and spatial coding</title>
+      <link>https://by-liu.github.io/publication/learning-image-representation/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/learning-image-representation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Representation Learning by Deep Appearance and Spatial Coding</title>
+      <link>https://by-liu.github.io/publication/image-representation-learning/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/image-representation-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Adaptive spatial partition learning for image classification</title>
+      <link>https://by-liu.github.io/publication/adaptive-spatial-partition-learning/</link>
+      <pubDate>Wed, 22 Oct 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/adaptive-spatial-partition-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularized Hierarchical Feature Learning with Non-negative Sparsity and Selectivity for Image Classification</title>
+      <link>https://by-liu.github.io/publication/regularized-feature-learning/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/regularized-feature-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robust Feature Encoding with Neighborhood Information for Image Classification</title>
+      <link>https://by-liu.github.io/publication/robust-feature-encoding/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/robust-feature-encoding/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

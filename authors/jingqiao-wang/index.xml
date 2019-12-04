@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jingqiao Wang | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/authors/jingqiao-wang/</link>
+      <atom:link href="https://by-liu.github.io/authors/jingqiao-wang/index.xml" rel="self" type="application/rss+xml" />
+    <description>Jingqiao Wang</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/img/icon-192.png</url>
+      <title>Jingqiao Wang</title>
+      <link>https://by-liu.github.io/authors/jingqiao-wang/</link>
+    </image>
+    
+    <item>
+      <title>Learning a Representative and Discriminative Part Model with Deep Convolutional Features for Scene Recognition</title>
+      <link>https://by-liu.github.io/publication/learning-a-representative-and-discriminative-part-model/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/learning-a-representative-and-discriminative-part-model/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

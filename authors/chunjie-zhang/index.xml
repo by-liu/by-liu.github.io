@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chunjie Zhang | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/authors/chunjie-zhang/</link>
+      <atom:link href="https://by-liu.github.io/authors/chunjie-zhang/index.xml" rel="self" type="application/rss+xml" />
+    <description>Chunjie Zhang</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 26 Jul 2013 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/img/icon-192.png</url>
+      <title>Chunjie Zhang</title>
+      <link>https://by-liu.github.io/authors/chunjie-zhang/</link>
+    </image>
+    
+    <item>
+      <title>Robust Feature Encoding with Neighborhood Information for Image Classification</title>
+      <link>https://by-liu.github.io/publication/robust-feature-encoding/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/robust-feature-encoding/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

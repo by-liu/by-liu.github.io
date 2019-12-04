@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xiaoting Zhang | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/authors/xiaoting-zhang/</link>
+      <atom:link href="https://by-liu.github.io/authors/xiaoting-zhang/index.xml" rel="self" type="application/rss+xml" />
+    <description>Xiaoting Zhang</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/img/icon-192.png</url>
+      <title>Xiaoting Zhang</title>
+      <link>https://by-liu.github.io/authors/xiaoting-zhang/</link>
+    </image>
+    
+    <item>
+      <title>Furnishing Your Room by What You See: An End-to-End Furniture Set Retrieval Framework with Rich Annotated Benchmark Dataset</title>
+      <link>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
