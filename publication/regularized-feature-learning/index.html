@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!DOCTYPE html><html lang="en-us" >
 
 <head>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.6.1">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
 
   
 
@@ -21,7 +20,7 @@
   
   
 
-  <meta name="author" content="Bingyuan Liu">
+  
 
   
   
@@ -44,11 +43,14 @@
 
   
   
+
+  
+  
   
   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -60,8 +62,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -70,6 +72,118 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
     
 
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
     
 
   
@@ -100,13 +214,15 @@
       dataLayer.push(arguments);
   }
 
-  function trackOutboundLink(url) {
+  function trackOutboundLink(url, target) {
     gtag('event', 'click', {
          'event_category': 'outbound',
          'event_label': url,
          'transport_type': 'beacon',
          'event_callback': function () {
-           document.location = url;
+           if (target !== '_blank') {
+             document.location = url;
+           }
          }
     });
     console.debug("Outbound link clicked: " + url);
@@ -116,7 +232,7 @@
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);  
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
   }
 
   gtag('js', new Date());
@@ -131,13 +247,19 @@
 
 
   
+  
+
+  
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="https://by-liu.github.io/publication/regularized-feature-learning/">
 
+  
+  
+  
   
   
   
@@ -151,8 +273,8 @@
   <meta property="og:site_name" content="Bingyuan Liu">
   <meta property="og:url" content="https://by-liu.github.io/publication/regularized-feature-learning/">
   <meta property="og:title" content="Regularized Hierarchical Feature Learning with Non-negative Sparsity and Selectivity for Image Classification | Bingyuan Liu">
-  <meta property="og:description" content="Recently, many deep networks are proposed to learn hierarchical image representation to replace traditional hand-designed features. To enhance the ability of the generative model to tackle discriminative computer vision tasks (e.g. image classification), we propose a hierarchical deconvolutional network with two biologically inspired properties incorporated, i.e., non-negative sparsity and selectivity. First, we propose a single layer deconvolutional model with a raw image as input, attempting to decompose the input as a weighted sum of feature maps convolving with filters. Here, the filters are the model parameters common to all the inputs, while the feature maps and the summing weights are specific to the input. The non-negative sparsity is formulated as the /i-norm regularizer on the feature map, which is used to generate feature representations for image classification. And the selectivity is forced on the filters to make different filters active different inputs, through requiring the sparsity on the summing weights specifically. The two properties are summarized into an overall cost function, which can be solved with an alternatively iterative algorithm. Then, we build multiple layer deconvolutional network by stacking the single models, where the next-layer inputs are the results of a 3D max-pooling operation on the inferred feature maps of the front layer, and train the network in a greedy layer wise scheme. Finally, we explore the feature maps of each layer to generate the image representations and input them to a SVM classifier for the classification task. Experiments on two image benchmark datasets of Caltech-101 and Caltech-256 demonstrate the encouraging performance of our model compared with other deep feature learning models as well as some hand-designed features."><meta property="og:image" content="https://by-liu.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://by-liu.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="Recently, many deep networks are proposed to learn hierarchical image representation to replace traditional hand-designed features. To enhance the ability of the generative model to tackle discriminative computer vision tasks (e.g. image classification), we propose a hierarchical deconvolutional network with two biologically inspired properties incorporated, i.e., non-negative sparsity and selectivity. First, we propose a single layer deconvolutional model with a raw image as input, attempting to decompose the input as a weighted sum of feature maps convolving with filters. Here, the filters are the model parameters common to all the inputs, while the feature maps and the summing weights are specific to the input. The non-negative sparsity is formulated as the /i-norm regularizer on the feature map, which is used to generate feature representations for image classification. And the selectivity is forced on the filters to make different filters active different inputs, through requiring the sparsity on the summing weights specifically. The two properties are summarized into an overall cost function, which can be solved with an alternatively iterative algorithm. Then, we build multiple layer deconvolutional network by stacking the single models, where the next-layer inputs are the results of a 3D max-pooling operation on the inferred feature maps of the front layer, and train the network in a greedy layer wise scheme. Finally, we explore the feature maps of each layer to generate the image representations and input them to a SVM classifier for the classification task. Experiments on two image benchmark datasets of Caltech-101 and Caltech-256 demonstrate the encouraging performance of our model compared with other deep feature learning models as well as some hand-designed features."><meta property="og:image" content="https://by-liu.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://by-liu.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2014-08-24T00:00:00&#43;00:00">
@@ -164,8 +286,6 @@
 
 
     
-
-
 
 
 
@@ -198,7 +318,7 @@
     "name": "Bingyuan Liu",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://by-liu.github.io/img/icon-512.png"
+      "url": "https://by-liu.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
   "description": "Recently, many deep networks are proposed to learn hierarchical image representation to replace traditional hand-designed features. To enhance the ability of the generative model to tackle discriminative computer vision tasks (e.g. image classification), we propose a hierarchical deconvolutional network with two biologically inspired properties incorporated, i.e., non-negative sparsity and selectivity. First, we propose a single layer deconvolutional model with a raw image as input, attempting to decompose the input as a weighted sum of feature maps convolving with filters. Here, the filters are the model parameters common to all the inputs, while the feature maps and the summing weights are specific to the input. The non-negative sparsity is formulated as the /i-norm regularizer on the feature map, which is used to generate feature representations for image classification. And the selectivity is forced on the filters to make different filters active different inputs, through requiring the sparsity on the summing weights specifically. The two properties are summarized into an overall cost function, which can be solved with an alternatively iterative algorithm. Then, we build multiple layer deconvolutional network by stacking the single models, where the next-layer inputs are the results of a 3D max-pooling operation on the inferred feature maps of the front layer, and train the network in a greedy layer wise scheme. Finally, we explore the feature maps of each layer to generate the image representations and input them to a SVM classifier for the classification task. Experiments on two image benchmark datasets of Caltech-101 and Caltech-256 demonstrate the encouraging performance of our model compared with other deep feature learning models as well as some hand-designed features."
@@ -258,13 +378,20 @@
 
 
   
+
+
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
 
     
-    
-    
+    <div class="d-none d-lg-inline-flex">
       <a class="navbar-brand" href="/">Bingyuan Liu</a>
+    </div>
     
 
     
@@ -272,6 +399,12 @@
             data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span><i class="fas fa-bars"></i></span>
     </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Bingyuan Liu</a>
+    </div>
     
 
     
@@ -412,8 +545,21 @@
       
 
       
-      <li class="nav-item">
-        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
       </li>
       
 
@@ -463,11 +609,8 @@
   <div>
     
 
-
-
   
-  <span><a href="/authors/bingyuan-liu/">Bingyuan Liu</a></span>, <span><a href="/authors/jing-liu/">Jing Liu</a></span>, <span><a href="/authors/xiao-bai/">Xiao Bai</a></span>, <span><a href="/authors/hanqing-lu/">Hanqing Lu</a></span>
-
+  <span>Bingyuan Liu</span>, <span>Jing Liu</span>, <span>Xiao Bai</span>, <span>Hanqing Lu</span>
   </div>
   
   
@@ -488,6 +631,9 @@
 
   
   
+  
+  <span class="middot-divider"></span>
+  <a href="/publication/regularized-feature-learning/#disqus_thread"></a>
   
 
   
@@ -614,9 +760,9 @@
   
   <a class="badge badge-light" href="/tags/deep-learning/">deep learning</a>
   
-  <a class="badge badge-light" href="/tags/unsupervised-learning/">unsupervised learning</a>
-  
   <a class="badge badge-light" href="/tags/image-classification/">image classification</a>
+  
+  <a class="badge badge-light" href="/tags/unsupervised-learning/">unsupervised learning</a>
   
 </div>
 
@@ -692,36 +838,82 @@
 
 
   
-  
     
-  
-  
-
-
-
-
-
-
-  
-  
-  
-  
-  <div class="media author-card content-widget-hr">
     
 
-    <div class="media-body">
-      <h5 class="card-title"><a href="/authors/bingyuan-liu/"></a></h5>
-      
-      
-      <ul class="network-icon" aria-hidden="true">
+
+
+
+
   
-</ul>
-
-    </div>
-  </div>
 
 
+  
+    
+    
 
+
+
+
+
+  
+
+
+  
+    
+    
+
+
+
+
+
+  
+
+
+  
+    
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "by-liu" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
 
 
 
@@ -749,9 +941,6 @@
 
     
     
-
-    
-    
     
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
@@ -762,14 +951,12 @@
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
         
       
 
-      
-      
     
 
     
@@ -779,7 +966,12 @@
 
     
     
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -832,6 +1024,11 @@
 
     
     
+    <script id="dsq-count-scr" src="https://by-liu.disqus.com/count.js" async></script>
+    
+
+    
+    
     
     
     
@@ -844,7 +1041,7 @@
     
     
     
-    <script src="/js/academic.min.0e040a4c8b8532fc173c2fe4328906d0.js"></script>
+    <script src="/js/academic.min.37431be2d92d7fb0160054761ab79602.js"></script>
 
     
 
@@ -861,7 +1058,17 @@
 
   <p class="powered-by">
     
+  </p>
 
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
     <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
