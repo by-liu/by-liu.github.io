@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chuanhui Yu | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/author/chuanhui-yu/</link>
+      <atom:link href="https://by-liu.github.io/author/chuanhui-yu/index.xml" rel="self" type="application/rss+xml" />
+    <description>Chuanhui Yu</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 21 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Chuanhui Yu</title>
+      <link>https://by-liu.github.io/author/chuanhui-yu/</link>
+    </image>
+    
+    <item>
+      <title>Furnishing Your Room by What You See: An End-to-End Furniture Set Retrieval Framework with Rich Annotated Benchmark Dataset</title>
+      <link>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</link>
+      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

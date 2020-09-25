@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>1 | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/publication-type/1/</link>
+      <atom:link href="https://by-liu.github.io/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
+    <description>1</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>1</title>
+      <link>https://by-liu.github.io/publication-type/1/</link>
+    </image>
+    
+    <item>
+      <title>Image Representation Learning by Deep Appearance and Spatial Coding</title>
+      <link>https://by-liu.github.io/publication/image-representation-learning/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/image-representation-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Learning a Representative and Discriminative Part Model with Deep Convolutional Features for Scene Recognition</title>
+      <link>https://by-liu.github.io/publication/learning-a-representative-and-discriminative-part-model/</link>
+      <pubDate>Sat, 01 Nov 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/learning-a-representative-and-discriminative-part-model/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularized Hierarchical Feature Learning with Non-negative Sparsity and Selectivity for Image Classification</title>
+      <link>https://by-liu.github.io/publication/regularized-feature-learning/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/regularized-feature-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robust Feature Encoding with Neighborhood Information for Image Classification</title>
+      <link>https://by-liu.github.io/publication/robust-feature-encoding/</link>
+      <pubDate>Fri, 26 Jul 2013 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/robust-feature-encoding/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
