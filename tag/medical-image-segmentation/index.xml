@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>3 | Bingyuan Liu</title>
-    <link>https://by-liu.github.io/publication-type/3/</link>
-      <atom:link href="https://by-liu.github.io/publication-type/3/index.xml" rel="self" type="application/rss+xml" />
-    <description>3</description>
+    <title>medical image segmentation | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/tag/medical-image-segmentation/</link>
+      <atom:link href="https://by-liu.github.io/tag/medical-image-segmentation/index.xml" rel="self" type="application/rss+xml" />
+    <description>medical image segmentation</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 18 Apr 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>3</title>
-      <link>https://by-liu.github.io/publication-type/3/</link>
+      <title>medical image segmentation</title>
+      <link>https://by-liu.github.io/tag/medical-image-segmentation/</link>
     </image>
     
     <item>
@@ -17,14 +17,6 @@
       <link>https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/</link>
       <pubDate>Sun, 18 Apr 2021 00:00:00 +0000</pubDate>
       <guid>https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Furnishing Your Room by What You See: An End-to-End Furniture Set Retrieval Framework with Rich Annotated Benchmark Dataset</title>
-      <link>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</link>
-      <pubDate>Thu, 21 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/furnishing-your-room-by-what-your-see/</guid>
       <description></description>
     </item>
     
