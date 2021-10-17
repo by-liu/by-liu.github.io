@@ -281,5 +281,16 @@ Three
       <description></description>
     </item>
     
+    <item>
+      <title>My travel map</title>
+      <link>https://by-liu.github.io/travel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/travel/</guid>
+      <description>&lt;p&gt;Here is the places I have lived or visited so far :&lt;/p&gt;
+&lt;iframe src=&#34;https://www.google.com/maps/d/embed?mid=1ss9SHX29a1AYb2zxVx3YdQfudHw4Udqu&#34; width=&#34;800&#34; height=&#34;640&#34;&gt;&lt;/iframe&gt;
+&lt;p&gt;There are so many wonderful places I have not traveled yet. The next place may be Europe.&lt;/p&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
