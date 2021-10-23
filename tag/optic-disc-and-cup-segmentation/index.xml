@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>optic disc and cup segmentation | Bingyuan Liu</title>
+    <link>https://by-liu.github.io/tag/optic-disc-and-cup-segmentation/</link>
+      <atom:link href="https://by-liu.github.io/tag/optic-disc-and-cup-segmentation/index.xml" rel="self" type="application/rss+xml" />
+    <description>optic disc and cup segmentation</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 23 Oct 2021 17:18:04 +0800</lastBuildDate>
+    <image>
+      <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
+      <title>optic disc and cup segmentation</title>
+      <link>https://by-liu.github.io/tag/optic-disc-and-cup-segmentation/</link>
+    </image>
+    
+    <item>
+      <title>🔥 Our results on MICCAI2021 GAMMA contest : Top 1 in two tasks </title>
+      <link>https://by-liu.github.io/post/gamma-2021/</link>
+      <pubDate>Sat, 23 Oct 2021 17:18:04 +0800</pubDate>
+      <guid>https://by-liu.github.io/post/gamma-2021/</guid>
+      <description>&lt;p&gt;Our team, &lt;strong&gt;DIAGNOS-ETS&lt;/strong&gt;, achieved great performance on &lt;a href=&#34;https://aistudio.baidu.com/aistudio/competition/detail/90/0/introduction&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MICCAI2021 GAMMA contest&lt;/a&gt;.
+Here are our results on the three tasks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Top 1&lt;/strong&gt; : Macular fovea localization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Top 1&lt;/strong&gt; : Optic disc/cup segmentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Top 8&lt;/strong&gt; : Multi-modal glaucoma grading&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;The total number of teams in this contest :&lt;/em&gt; &lt;span style=&#34;color:red&#34;&gt; &lt;em&gt;556&lt;/em&gt; &lt;/span&gt; .&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-the-certificate-for-macular-fovea-localization-task&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;
+        &lt;img alt=&#34;The certificate for macular fovea localization task&#34; srcset=&#34;
+               /post/gamma-2021/task2_hu84e5ed42737a0a6aa09e2d8dde61fa01_435450_6b06b33b3172bd1af6c93bcbdac39210.jpeg 400w,
+               /post/gamma-2021/task2_hu84e5ed42737a0a6aa09e2d8dde61fa01_435450_f49e96a021ca535303101fdc9e0c1d24.jpeg 760w,
+               /post/gamma-2021/task2_hu84e5ed42737a0a6aa09e2d8dde61fa01_435450_1200x1200_fit_q75_lanczos.jpeg 1200w&#34;
+               src=&#34;https://by-liu.github.io/post/gamma-2021/task2_hu84e5ed42737a0a6aa09e2d8dde61fa01_435450_6b06b33b3172bd1af6c93bcbdac39210.jpeg&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The certificate for macular fovea localization task
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-the-certificate-for-optic-disccup-segmentatoin&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;
+        &lt;img alt=&#34;The certificate for optic disc/cup segmentatoin&#34; srcset=&#34;
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_f87b1e37f53e58df0f789d80126c4776.jpeg 400w,
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_33811b7f9dbabbb88a49cc04d1014a1a.jpeg 760w,
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_1200x1200_fit_q75_lanczos.jpeg 1200w&#34;
+               src=&#34;https://by-liu.github.io/post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_f87b1e37f53e58df0f789d80126c4776.jpeg&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The certificate for optic disc/cup segmentatoin
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-the-certificate-of-excellent-award&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;
+        &lt;img alt=&#34;The certificate of excellent award&#34; srcset=&#34;
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_f87b1e37f53e58df0f789d80126c4776.jpeg 400w,
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_33811b7f9dbabbb88a49cc04d1014a1a.jpeg 760w,
+               /post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_1200x1200_fit_q75_lanczos.jpeg 1200w&#34;
+               src=&#34;https://by-liu.github.io/post/gamma-2021/task3_hu84e5ed42737a0a6aa09e2d8dde61fa01_440811_f87b1e37f53e58df0f789d80126c4776.jpeg&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The certificate of excellent award
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Thanks to all the collaborators.&lt;/p&gt;
+&lt;p&gt;🚀 Our method and code will be publicly available soon.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
