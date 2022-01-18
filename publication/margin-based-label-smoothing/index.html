@@ -33,10 +33,10 @@
   
     
   
-  <meta name="description" content="Most segmentation losses are arguably variants of the Cross-Entropy (CE) or Dice losses. In the abundant segmentation literature, there is no clear consensus as to which of these losses is a better choice, with varying performances for each across different benchmarks and applications. In this work, we develop a theoretical analysis that links these two types of losses, exposing their advantages and weaknesses. First, we provide a constrained-optimization perspective showing that CE and Dice share a much deeper connection than previously thought: They both decompose into label-marginal penalties and closely related ground-truth matching penalties. Then, we provide bound relationships and an information-theoretic analysis, which uncover hidden label-marginal biases: Dice has an intrinsic bias towards specific extremely imbalanced solutions, whereas CE implicitly encourages the ground-truth region proportions. Our theoretical results explain the wide experimental evidence in the medical-imaging literature, whereby Dice losses bring improvements for imbalanced segmentation. It also explains why CE dominates natural-image problems with diverse class proportions, in which case Dice might have difficulty adapting to different label-marginal distributions. Based on our theoretical analysis, we propose a principled and simple solution, which enables to control explicitly the label-marginal bias. Our loss integrates CE with explicit 1 regularization, which encourages label marginals to match target class proportions, thereby mitigating class imbalance but without losing generality. Comprehensive experiments and ablation studies over different losses and applications validate our theoretical analysis, as well as the effectiveness of our explicit label-marginal regularizers." />
+  <meta name="description" content="In spite of the dominant performances of deep neural networks, recent works have shown that they are poorly calibrated, resulting in over-confident predictions. Miscalibration can be exacerbated by overfitting due to the minimization of the cross-entropy during training, as it promotes the predicted softmax probabilities to match the one-hot label assignments. This yields a pre-softmax activation of the correct class that is significantly larger than the remaining activations. Recent evidence from the literature suggests that loss functions that embed implicit or explicit maximization of the entropy of predictions yield state-of-the-art calibration performances. We provide a unifying constrained-optimization perspective of current state-of-the-art calibration losses. Specifically, these losses could be viewed as approximations of a linear penalty (or a Lagrangian) imposing equality constraints on logit distances. This points to an important limitation of such underlying equality constraints, whose ensuing gradients constantly push towards a non-informative solution, which might prevent from reaching the best compromise between the discriminative performance and calibration of the model during gradient-based optimization. Following our observations, we propose a simple and flexible generalization based on inequality constraints, which imposes a controllable margin on logit distances. Comprehensive experiments on a variety of image classification, semantic segmentation and NLP benchmarks demonstrate that our method sets novel state-of-the-art results on these tasks in terms of network calibration, without affecting the discriminative performance. The code is available at https://github.com/by-liu/MbLS." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/" />
+  <link rel="alternate" hreflang="en-us" href="https://by-liu.github.io/publication/margin-based-label-smoothing/" />
 
   
 
@@ -315,7 +315,7 @@
   <link rel="icon" type="image/png" href="/media/icon_huc270225b98172d07c14b56e775190e96_7212_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_huc270225b98172d07c14b56e775190e96_7212_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/" />
+  <link rel="canonical" href="https://by-liu.github.io/publication/margin-based-label-smoothing/" />
 
   
   
@@ -331,18 +331,18 @@
   <meta property="twitter:card" content="summary_large_image" />
   
   <meta property="og:site_name" content="Bingyuan Liu" />
-  <meta property="og:url" content="https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/" />
-  <meta property="og:title" content="The hidden label-marginal biases of segmentation losses | Bingyuan Liu" />
-  <meta property="og:description" content="Most segmentation losses are arguably variants of the Cross-Entropy (CE) or Dice losses. In the abundant segmentation literature, there is no clear consensus as to which of these losses is a better choice, with varying performances for each across different benchmarks and applications. In this work, we develop a theoretical analysis that links these two types of losses, exposing their advantages and weaknesses. First, we provide a constrained-optimization perspective showing that CE and Dice share a much deeper connection than previously thought: They both decompose into label-marginal penalties and closely related ground-truth matching penalties. Then, we provide bound relationships and an information-theoretic analysis, which uncover hidden label-marginal biases: Dice has an intrinsic bias towards specific extremely imbalanced solutions, whereas CE implicitly encourages the ground-truth region proportions. Our theoretical results explain the wide experimental evidence in the medical-imaging literature, whereby Dice losses bring improvements for imbalanced segmentation. It also explains why CE dominates natural-image problems with diverse class proportions, in which case Dice might have difficulty adapting to different label-marginal distributions. Based on our theoretical analysis, we propose a principled and simple solution, which enables to control explicitly the label-marginal bias. Our loss integrates CE with explicit 1 regularization, which encourages label marginals to match target class proportions, thereby mitigating class imbalance but without losing generality. Comprehensive experiments and ablation studies over different losses and applications validate our theoretical analysis, as well as the effectiveness of our explicit label-marginal regularizers." /><meta property="og:image" content="https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/featured.jpg" />
-    <meta property="twitter:image" content="https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/featured.jpg" /><meta property="og:locale" content="en-us" />
+  <meta property="og:url" content="https://by-liu.github.io/publication/margin-based-label-smoothing/" />
+  <meta property="og:title" content="The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration | Bingyuan Liu" />
+  <meta property="og:description" content="In spite of the dominant performances of deep neural networks, recent works have shown that they are poorly calibrated, resulting in over-confident predictions. Miscalibration can be exacerbated by overfitting due to the minimization of the cross-entropy during training, as it promotes the predicted softmax probabilities to match the one-hot label assignments. This yields a pre-softmax activation of the correct class that is significantly larger than the remaining activations. Recent evidence from the literature suggests that loss functions that embed implicit or explicit maximization of the entropy of predictions yield state-of-the-art calibration performances. We provide a unifying constrained-optimization perspective of current state-of-the-art calibration losses. Specifically, these losses could be viewed as approximations of a linear penalty (or a Lagrangian) imposing equality constraints on logit distances. This points to an important limitation of such underlying equality constraints, whose ensuing gradients constantly push towards a non-informative solution, which might prevent from reaching the best compromise between the discriminative performance and calibration of the model during gradient-based optimization. Following our observations, we propose a simple and flexible generalization based on inequality constraints, which imposes a controllable margin on logit distances. Comprehensive experiments on a variety of image classification, semantic segmentation and NLP benchmarks demonstrate that our method sets novel state-of-the-art results on these tasks in terms of network calibration, without affecting the discriminative performance. The code is available at https://github.com/by-liu/MbLS." /><meta property="og:image" content="https://by-liu.github.io/publication/margin-based-label-smoothing/featured.jpg" />
+    <meta property="twitter:image" content="https://by-liu.github.io/publication/margin-based-label-smoothing/featured.jpg" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2021-04-20T00:00:00&#43;00:00"
+        content="2022-01-18T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2021-04-18T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2021-11-30T00:00:00&#43;00:00">
   
 
   
@@ -364,16 +364,16 @@
   "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/"
+    "@id": "https://by-liu.github.io/publication/margin-based-label-smoothing/"
   },
-  "headline": "The hidden label-marginal biases of segmentation losses",
+  "headline": "The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration",
   
   "image": [
-    "https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/featured.jpg"
+    "https://by-liu.github.io/publication/margin-based-label-smoothing/featured.jpg"
   ],
   
-  "datePublished": "2021-04-20T00:00:00Z",
-  "dateModified": "2021-04-18T00:00:00Z",
+  "datePublished": "2022-01-18T00:00:00Z",
+  "dateModified": "2021-11-30T00:00:00Z",
   
   "author": {
     "@type": "Person",
@@ -388,7 +388,7 @@
       "url": "https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Most segmentation losses are arguably variants of the Cross-Entropy (CE) or Dice losses. In the abundant segmentation literature, there is no clear consensus as to which of these losses is a better choice, with varying performances for each across different benchmarks and applications. In this work, we develop a theoretical analysis that links these two types of losses, exposing their advantages and weaknesses. First, we provide a constrained-optimization perspective showing that CE and Dice share a much deeper connection than previously thought: They both decompose into label-marginal penalties and closely related ground-truth matching penalties. Then, we provide bound relationships and an information-theoretic analysis, which uncover hidden label-marginal biases: Dice has an intrinsic bias towards specific extremely imbalanced solutions, whereas CE implicitly encourages the ground-truth region proportions. Our theoretical results explain the wide experimental evidence in the medical-imaging literature, whereby Dice losses bring improvements for imbalanced segmentation. It also explains why CE dominates natural-image problems with diverse class proportions, in which case Dice might have difficulty adapting to different label-marginal distributions. Based on our theoretical analysis, we propose a principled and simple solution, which enables to control explicitly the label-marginal bias. Our loss integrates CE with explicit 1 regularization, which encourages label marginals to match target class proportions, thereby mitigating class imbalance but without losing generality. Comprehensive experiments and ablation studies over different losses and applications validate our theoretical analysis, as well as the effectiveness of our explicit label-marginal regularizers."
+  "description": "In spite of the dominant performances of deep neural networks, recent works have shown that they are poorly calibrated, resulting in over-confident predictions. Miscalibration can be exacerbated by overfitting due to the minimization of the cross-entropy during training, as it promotes the predicted softmax probabilities to match the one-hot label assignments. This yields a pre-softmax activation of the correct class that is significantly larger than the remaining activations. Recent evidence from the literature suggests that loss functions that embed implicit or explicit maximization of the entropy of predictions yield state-of-the-art calibration performances. We provide a unifying constrained-optimization perspective of current state-of-the-art calibration losses. Specifically, these losses could be viewed as approximations of a linear penalty (or a Lagrangian) imposing equality constraints on logit distances. This points to an important limitation of such underlying equality constraints, whose ensuing gradients constantly push towards a non-informative solution, which might prevent from reaching the best compromise between the discriminative performance and calibration of the model during gradient-based optimization. Following our observations, we propose a simple and flexible generalization based on inequality constraints, which imposes a controllable margin on logit distances. Comprehensive experiments on a variety of image classification, semantic segmentation and NLP benchmarks demonstrate that our method sets novel state-of-the-art results on these tasks in terms of network calibration, without affecting the discriminative performance. The code is available at https://github.com/by-liu/MbLS."
 }
 </script>
 
@@ -404,11 +404,11 @@
 
 
 
-  <title>The hidden label-marginal biases of segmentation losses | Bingyuan Liu</title>
+  <title>The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration | Bingyuan Liu</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="20b5ebf02c607fe149f67fe71809eb64" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="c6fb257c375e10e52e38929aea7594a5" >
 
   
   
@@ -745,7 +745,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>The hidden label-marginal biases of segmentation losses</h1>
+  <h1>The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration</h1>
 
   
 
@@ -763,10 +763,9 @@
 
   <span >
       Bingyuan Liu</span>, <span >
-      Jose Dolz</span>, <span >
+      Ismail Ben Ayed</span>, <span >
       Adrian Galdran</span>, <span >
-      Riadh Kobbi</span>, <span >
-      Ismail Ben Ayed</span>
+      Jose Dolz</span>
   </div>
   
   
@@ -777,7 +776,7 @@
     
       
     
-    April 2021
+    November 2021
   </span>
   
 
@@ -841,7 +840,7 @@
   
     
   
-  <a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/abs/2104.08717" target="_blank" rel="noopener">
+  <a class="btn btn-outline-primary btn-page-header" href="https://arxiv.org/abs/2111.15430" target="_blank" rel="noopener">
     <i class="ai ai-arxiv mr-1"></i>
     arxiv
   </a>
@@ -857,7 +856,7 @@
   
     
   
-  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/by-liu/SegLossBias" target="_blank" rel="noopener">
+  <a class="btn btn-outline-primary btn-page-header" href="https://github.com/by-liu/MbLS" target="_blank" rel="noopener">
     <i class="fab fa-github mr-1"></i>
     code
   </a>
@@ -869,9 +868,9 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 257px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 567px;">
   <div style="position: relative">
-    <img src="/publication/the-hidden-biases-of-segmentation-losses/featured_hub959c9be9b7e4bb0b937a93124ebedea_393048_720x0_resize_q75_lanczos.jpg" alt="" class="featured-image">
+    <img src="/publication/margin-based-label-smoothing/featured_hu1bcfdecf7483f74849c0f7f247a58b3e_176048_720x0_resize_q75_lanczos.jpg" alt="" class="featured-image">
     
   </div>
 </div>
@@ -882,7 +881,7 @@
 
     
     <h3>Abstract</h3>
-    <p class="pub-abstract">Most segmentation losses are arguably variants of the Cross-Entropy (CE) or Dice losses. In the abundant segmentation literature, there is no clear consensus as to which of these losses is a better choice, with varying performances for each across different benchmarks and applications. In this work, we develop a theoretical analysis that links these two types of losses, exposing their advantages and weaknesses. First, we provide a constrained-optimization perspective showing that CE and Dice share a much deeper connection than previously thought: They both decompose into label-marginal penalties and closely related ground-truth matching penalties. Then, we provide bound relationships and an information-theoretic analysis, which uncover hidden label-marginal biases: Dice has an intrinsic bias towards specific extremely imbalanced solutions, whereas CE implicitly encourages the ground-truth region proportions. Our theoretical results explain the wide experimental evidence in the medical-imaging literature, whereby Dice losses bring improvements for imbalanced segmentation. It also explains why CE dominates natural-image problems with diverse class proportions, in which case Dice might have difficulty adapting to different label-marginal distributions. Based on our theoretical analysis, we propose a principled and simple solution, which enables to control explicitly the label-marginal bias. Our loss integrates CE with explicit 1 regularization, which encourages label marginals to match target class proportions, thereby mitigating class imbalance but without losing generality. Comprehensive experiments and ablation studies over different losses and applications validate our theoretical analysis, as well as the effectiveness of our explicit label-marginal regularizers.</p>
+    <p class="pub-abstract">In spite of the dominant performances of deep neural networks, recent works have shown that they are poorly calibrated, resulting in over-confident predictions. Miscalibration can be exacerbated by overfitting due to the minimization of the cross-entropy during training, as it promotes the predicted softmax probabilities to match the one-hot label assignments. This yields a pre-softmax activation of the correct class that is significantly larger than the remaining activations. Recent evidence from the literature suggests that loss functions that embed implicit or explicit maximization of the entropy of predictions yield state-of-the-art calibration performances. We provide a unifying constrained-optimization perspective of current state-of-the-art calibration losses. Specifically, these losses could be viewed as approximations of a linear penalty (or a Lagrangian) imposing equality constraints on logit distances. This points to an important limitation of such underlying equality constraints, whose ensuing gradients constantly push towards a non-informative solution, which might prevent from reaching the best compromise between the discriminative performance and calibration of the model during gradient-based optimization. Following our observations, we propose a simple and flexible generalization based on inequality constraints, which imposes a controllable margin on logit distances. Comprehensive experiments on a variety of image classification, semantic segmentation and NLP benchmarks demonstrate that our method sets novel state-of-the-art results on these tasks in terms of network calibration, without affecting the discriminative performance. The code is available at <a href="https://github.com/by-liu/MbLS">https://github.com/by-liu/MbLS</a>.</p>
     
 
     
@@ -931,9 +930,7 @@
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/image-segmentation/">image segmentation</a>
-  
-  <a class="badge badge-light" href="/tag/medical-image-segmentation/">medical image segmentation</a>
+  <a class="badge badge-light" href="/tag/calibration/">calibration</a>
   
 </div>
 
@@ -950,7 +947,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/&amp;text=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://by-liu.github.io/publication/margin-based-label-smoothing/&amp;text=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -963,7 +960,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/&amp;t=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://by-liu.github.io/publication/margin-based-label-smoothing/&amp;t=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -976,7 +973,7 @@
       
       
       <li>
-        <a href="mailto:?subject=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses&amp;body=https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration&amp;body=https://by-liu.github.io/publication/margin-based-label-smoothing/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -989,7 +986,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/&amp;title=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://by-liu.github.io/publication/margin-based-label-smoothing/&amp;title=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1002,7 +999,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses%20https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration%20https://by-liu.github.io/publication/margin-based-label-smoothing/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1015,7 +1012,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://by-liu.github.io/publication/the-hidden-biases-of-segmentation-losses/&amp;title=The%20hidden%20label-marginal%20biases%20of%20segmentation%20losses" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://by-liu.github.io/publication/margin-based-label-smoothing/&amp;title=The%20Devil%20is%20in%20the%20Margin:%20Margin-based%20Label%20Smoothing%20for%20Network%20Calibration" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1059,12 +1056,6 @@
 
 
   
-    
-
-
-
-
-  
 
 
 
@@ -1080,17 +1071,6 @@
 
 
   
-  
-  <div class="article-widget content-widget-hr">
-    <h3>Related</h3>
-    <ul>
-      
-      <li><a href="/publication/mixed-supervised-segmentation-confidence-maximization/">Mixed-supervised segmentation: Confidence maximization helps knowledge distillation</a></li>
-      
-      <li><a href="/post/gamma-2021/">🔥 Our results on MICCAI2021 GAMMA contest : Top 1 in two tasks </a></li>
-      
-    </ul>
-  </div>
   
 
 
