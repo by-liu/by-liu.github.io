@@ -11,46 +11,55 @@
     <loc>https://by-liu.github.io/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://by-liu.github.io/publication-type/3/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <loc>https://by-liu.github.io/publication-type/1/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/calibration/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/deep-learning/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/image-classification/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication_types/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tags/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/margin-based-label-smoothing/</loc>
-    <lastmod>2021-11-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/post/</loc>
+    <lastmod>2022-03-11T12:45:34+08:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/post/cvpr2022-mbls/</loc>
+    <lastmod>2022-03-11T12:45:34+08:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/publication-type/3/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/publication/gamma-challenge-2021/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/glaucoma-grading/</loc>
-    <lastmod>2021-10-23T17:18:04+08:00</lastmod>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/tag/medical-image-segmentation/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/tag/multi-modal-learning/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/macular-fovea-localization/</loc>
     <lastmod>2021-10-23T17:18:04+08:00</lastmod>
   </url><url>
-    <loc>https://by-liu.github.io/tag/medical-image-segmentation/</loc>
-    <lastmod>2021-10-23T17:18:04+08:00</lastmod>
-  </url><url>
-    <loc>https://by-liu.github.io/tag/multi-modal-learning/</loc>
-    <lastmod>2021-10-23T17:18:04+08:00</lastmod>
-  </url><url>
     <loc>https://by-liu.github.io/tag/optic-disc-and-cup-segmentation/</loc>
-    <lastmod>2021-10-23T17:18:04+08:00</lastmod>
-  </url><url>
-    <loc>https://by-liu.github.io/post/</loc>
     <lastmod>2021-10-23T17:18:04+08:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/post/gamma-2021/</loc>
@@ -103,9 +112,6 @@
   </url><url>
     <loc>https://by-liu.github.io/tag/unsupervised-learning/</loc>
     <lastmod>2015-07-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://by-liu.github.io/publication-type/1/</loc>
-    <lastmod>2014-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/image-representation-learning/</loc>
     <lastmod>2014-11-01T00:00:00+00:00</lastmod>

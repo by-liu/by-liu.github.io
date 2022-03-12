@@ -5,12 +5,20 @@
     <link>https://by-liu.github.io/publication-type/1/</link>
       <atom:link href="https://by-liu.github.io/publication-type/1/index.xml" rel="self" type="application/rss+xml" />
     <description>1</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Nov 2014 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
       <title>1</title>
       <link>https://by-liu.github.io/publication-type/1/</link>
     </image>
+    
+    <item>
+      <title>The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration</title>
+      <link>https://by-liu.github.io/publication/margin-based-label-smoothing/</link>
+      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/margin-based-label-smoothing/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Image Representation Learning by Deep Appearance and Spatial Coding</title>

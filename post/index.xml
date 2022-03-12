@@ -5,7 +5,7 @@
     <link>https://by-liu.github.io/post/</link>
       <atom:link href="https://by-liu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 23 Oct 2021 17:18:04 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 11 Mar 2022 12:45:34 +0800</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
@@ -13,7 +13,16 @@
     </image>
     
     <item>
-      <title>🔥 Our results on MICCAI2021 GAMMA contest : Top 1 in two tasks </title>
+      <title>🔥 Our work on calibrating deep neural networks is accepted at CVPR 2022</title>
+      <link>https://by-liu.github.io/post/cvpr2022-mbls/</link>
+      <pubDate>Fri, 11 Mar 2022 12:45:34 +0800</pubDate>
+      <guid>https://by-liu.github.io/post/cvpr2022-mbls/</guid>
+      <description>&lt;p&gt;For details of this paper, please refer to : &lt;a href=&#34;https://by-liu.github.io/publication/margin-based-label-smoothing&#34;&gt;The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Our results on MICCAI2021 GAMMA contest : Top 1 in two tasks </title>
       <link>https://by-liu.github.io/post/gamma-2021/</link>
       <pubDate>Sat, 23 Oct 2021 17:18:04 +0800</pubDate>
       <guid>https://by-liu.github.io/post/gamma-2021/</guid>
@@ -25,6 +34,9 @@ Here are our results on the three tasks:&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;Top 8&lt;/strong&gt; : Multi-modal glaucoma grading&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;The total number of teams in this contest :&lt;/em&gt; &lt;span style=&#34;color:red&#34;&gt; &lt;em&gt;556&lt;/em&gt; &lt;/span&gt; .&lt;/p&gt;
+&lt;!-- Thanks to all the collaborators. --&gt;
+&lt;h4 id=&#34;the-collaborative-paper-of-the-top-10-teams-in-the-challenge-&#34;&gt;The collaborative paper of the top 10 teams in the challenge :&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://by-liu.github.io/publication/gamma-challenge-2021/&#34;&gt;GAMMA Challenge: Glaucoma grAding from Multi-Modality imAges&lt;/a&gt;&lt;/p&gt;
 
 
 
@@ -109,8 +121,7 @@ Here are our results on the three tasks:&lt;/p&gt;
   &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
       The certificate of excellent award
     &lt;/figcaption&gt;&lt;/figure&gt;
-&lt;p&gt;Thanks to all the collaborators.&lt;/p&gt;
-&lt;p&gt;🚀 Our method and code will be publicly available soon. 🚀&lt;/p&gt;
+&lt;!-- 🚀 Our method and code will be publicly available soon. 🚀 --&gt;
 </description>
     </item>
     
