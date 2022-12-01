@@ -5,12 +5,28 @@
     <link>https://by-liu.github.io/publication/</link>
       <atom:link href="https://by-liu.github.io/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 21 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
       <title>Publications</title>
       <link>https://by-liu.github.io/publication/</link>
     </image>
+    
+    <item>
+      <title>Class Adaptive Network Calibration</title>
+      <link>https://by-liu.github.io/publication/class-adaptive-network-calibration/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/class-adaptive-network-calibration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Segmentation with mixed supervision: Confidence maximization helps knowledge distillation</title>
+      <link>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration</title>
@@ -25,14 +41,6 @@
       <link>https://by-liu.github.io/publication/gamma-challenge-2021/</link>
       <pubDate>Mon, 14 Feb 2022 00:00:00 +0000</pubDate>
       <guid>https://by-liu.github.io/publication/gamma-challenge-2021/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mixed-supervised segmentation: Confidence maximization helps knowledge distillation</title>
-      <link>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</link>
-      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</guid>
       <description></description>
     </item>
     

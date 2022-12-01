@@ -5,7 +5,7 @@
     <link>https://by-liu.github.io/post/</link>
       <atom:link href="https://by-liu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 11 Mar 2022 12:45:34 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 01 Dec 2022 00:27:07 -0500</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
@@ -13,7 +13,16 @@
     </image>
     
     <item>
-      <title>🔥 Our work on calibrating deep neural networks is accepted at CVPR 2022</title>
+      <title>One paper regarding segmentation with mixed supervision is accpeted at MedIA</title>
+      <link>https://by-liu.github.io/post/media2022-confkd/</link>
+      <pubDate>Thu, 01 Dec 2022 00:27:07 -0500</pubDate>
+      <guid>https://by-liu.github.io/post/media2022-confkd/</guid>
+      <description>&lt;p&gt;To check the paper, please refer to : &lt;a href=&#34;https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization&#34;&gt;Segmentation with mixed supervision: Confidence maximization helps knowledge distillation&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Our work on calibrating deep neural networks is accepted at CVPR 2022</title>
       <link>https://by-liu.github.io/post/cvpr2022-mbls/</link>
       <pubDate>Fri, 11 Mar 2022 12:45:34 +0800</pubDate>
       <guid>https://by-liu.github.io/post/cvpr2022-mbls/</guid>

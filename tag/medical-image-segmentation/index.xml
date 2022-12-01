@@ -5,12 +5,20 @@
     <link>https://by-liu.github.io/tag/medical-image-segmentation/</link>
       <atom:link href="https://by-liu.github.io/tag/medical-image-segmentation/index.xml" rel="self" type="application/rss+xml" />
     <description>medical image segmentation</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 14 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://by-liu.github.io/media/icon_huc270225b98172d07c14b56e775190e96_7212_512x512_fill_lanczos_center_2.png</url>
       <title>medical image segmentation</title>
       <link>https://by-liu.github.io/tag/medical-image-segmentation/</link>
     </image>
+    
+    <item>
+      <title>Segmentation with mixed supervision: Confidence maximization helps knowledge distillation</title>
+      <link>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>GAMMA Challenge:Glaucoma grAding from Multi-Modality imAges</title>
@@ -122,14 +130,6 @@ Here are our results on the three tasks:&lt;/p&gt;
     &lt;/figcaption&gt;&lt;/figure&gt;
 &lt;!-- 🚀 Our method and code will be publicly available soon. 🚀 --&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Mixed-supervised segmentation: Confidence maximization helps knowledge distillation</title>
-      <link>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</link>
-      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</guid>
-      <description></description>
     </item>
     
     <item>
