@@ -11,35 +11,38 @@
     <loc>https://by-liu.github.io/event/</loc>
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://by-liu.github.io/post/media2022-confkd/</loc>
-    <lastmod>2022-12-01T00:27:07-05:00</lastmod>
-  </url><url>
-    <loc>https://by-liu.github.io/post/</loc>
-    <lastmod>2022-12-01T00:27:07-05:00</lastmod>
-  </url><url>
-    <loc>https://by-liu.github.io/publication-type/3/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <loc>https://by-liu.github.io/publication-type/1/</loc>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/calibration/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/class-adaptive-network-calibration/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/deep-learning/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tag/image-classification/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication_types/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/tags/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/post/cvpr2023-cals/</loc>
+    <lastmod>2023-03-10T23:26:21-08:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/post/</loc>
+    <lastmod>2023-03-10T23:26:21-08:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/post/media2022-confkd/</loc>
+    <lastmod>2022-12-01T00:27:07-05:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication-type/2/</loc>
     <lastmod>2022-11-07T00:00:00+00:00</lastmod>
@@ -56,14 +59,14 @@
     <loc>https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization/</loc>
     <lastmod>2022-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://by-liu.github.io/publication-type/1/</loc>
-    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://by-liu.github.io/publication/margin-based-label-smoothing/</loc>
     <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/post/cvpr2022-mbls/</loc>
     <lastmod>2022-03-11T12:45:34+08:00</lastmod>
+  </url><url>
+    <loc>https://by-liu.github.io/publication-type/3/</loc>
+    <lastmod>2022-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://by-liu.github.io/publication/gamma-challenge-2021/</loc>
     <lastmod>2022-02-14T00:00:00+00:00</lastmod>

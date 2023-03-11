@@ -33,20 +33,29 @@
     </item>
     
     <item>
+      <title>Class Adaptive Network Calibration</title>
+      <link>https://by-liu.github.io/publication/class-adaptive-network-calibration/</link>
+      <pubDate>Sun, 18 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://by-liu.github.io/publication/class-adaptive-network-calibration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>One paper regarding model calibration is accepted at CVPR 2023</title>
+      <link>https://by-liu.github.io/post/cvpr2023-cals/</link>
+      <pubDate>Fri, 10 Mar 2023 23:26:21 -0800</pubDate>
+      <guid>https://by-liu.github.io/post/cvpr2023-cals/</guid>
+      <description>&lt;p&gt;For details of this paper, please refer to : &lt;a href=&#34;https://by-liu.github.io/publication/class-adaptive-network-calibration&#34;&gt;Class Adaptive Network Calibration&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>One paper regarding segmentation with mixed supervision is accpeted at MedIA</title>
       <link>https://by-liu.github.io/post/media2022-confkd/</link>
       <pubDate>Thu, 01 Dec 2022 00:27:07 -0500</pubDate>
       <guid>https://by-liu.github.io/post/media2022-confkd/</guid>
       <description>&lt;p&gt;To check the paper, please refer to: &lt;a href=&#34;https://by-liu.github.io/publication/mixed-supervised-segmentation-confidence-maximization&#34;&gt;Segmentation with mixed supervision: Confidence maximization helps knowledge distillation&lt;/a&gt;.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>Class Adaptive Network Calibration</title>
-      <link>https://by-liu.github.io/publication/class-adaptive-network-calibration/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>https://by-liu.github.io/publication/class-adaptive-network-calibration/</guid>
-      <description></description>
     </item>
     
     <item>
