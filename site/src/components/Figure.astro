@@ -1,0 +1,14 @@
+---
+interface Props { src: string; alt: string; caption: string; source?: string; sourceUrl?: string; }
+const { src, alt, caption, source, sourceUrl } = Astro.props;
+---
+<figure>
+	<a href={src} aria-label="Open figure at full size"><img src={src} alt={alt} loading="lazy" /></a>
+	<figcaption>{caption}{source && sourceUrl && <> <a href={sourceUrl}>{source}</a></>}</figcaption>
+</figure>
+<style>
+	figure { margin: 2.4em 0; }
+	figure > a { display: block; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+	img { width: 100%; height: auto; }
+	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+</style>

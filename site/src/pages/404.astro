@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found — Bingyuan Liu" description="The requested page could not be found.">
+	<section class="container not-found">
+		<p class="eyebrow">404</p>
+		<h1>This page has moved.</h1>
+		<p>Return to the <a href="/">homepage</a> or browse my <a href="/writing/">writing</a>.</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.not-found { min-height: 65vh; padding: 120px 0; }
+	h1 { margin: 0; font-size: clamp(2.5rem, 7vw, 5rem); letter-spacing: -0.06em; }
+	.not-found > p:last-child { color: var(--muted); }
+</style>

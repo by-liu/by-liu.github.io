@@ -1,0 +1,35 @@
+---
+import 'katex/dist/katex.min.css';
+import BaseLayout from './BaseLayout.astro';
+interface Props { title: string; description: string; date: Date; type: 'technical' | 'essay' | 'note'; tags?: string[]; }
+const { title, description, date, type, tags = [] } = Astro.props;
+const typeLabel = type === 'technical' ? 'Technical note' : type === 'essay' ? 'Essay' : 'Note';
+---
+
+<BaseLayout title={`${title} — Bingyuan Liu`} description={description}>
+	<article class:list={['article', `article-${type}`]}>
+		<header class="reading-container article-header">
+			<a class="back" href="/writing/">← Writing</a>
+			<p class="eyebrow">{typeLabel}</p>
+			<h1>{title}</h1>
+			<p class="dek">{description}</p>
+			<div class="meta">
+				<time datetime={date.toISOString()}>{date.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>
+				{tags.length > 0 && <span>{tags.join(' · ')}</span>}
+			</div>
+		</header>
+		<div class="reading-container prose article-body"><slot /></div>
+	</article>
+</BaseLayout>
+
+<style>
+	.article { padding: 80px 0 110px; }
+	.article-header { padding-bottom: 42px; border-bottom: 1px solid var(--line); }
+	.back { display: inline-block; margin-bottom: 52px; color: var(--muted); font-size: 0.86rem; font-weight: 650; text-decoration: none; }
+	h1 { max-width: 760px; margin: 0; font-size: clamp(2.45rem, 7vw, 4.7rem); letter-spacing: -0.058em; line-height: 0.98; }
+	.dek { max-width: 650px; margin: 26px 0 24px; color: var(--muted); font-size: 1.17rem; line-height: 1.6; }
+	.meta { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--faint); font-size: 0.83rem; }
+	.article-body { padding-top: 50px; }
+	.article-essay .article-body { font-family: Iowan Old Style, Baskerville, Georgia, serif; font-size: 1.12rem; }
+	@media (max-width: 600px) { .article { padding: 54px 0 80px; } .back { margin-bottom: 36px; } }
+</style>

@@ -1,0 +1,155 @@
+export const publications = [
+	{
+		title: 'Reducing Distraction in Long-Context Language Models by Focused Learning',
+		venue: 'arXiv',
+		year: '2024',
+		authorship: 'Second author',
+		paper: 'https://arxiv.org/abs/2411.05928',
+		featured: 3,
+	},
+	{
+		title: 'Do We Really Need Dice? The Hidden Region-Size Biases of Segmentation Losses',
+		venue: 'Medical Image Analysis',
+		year: '2024',
+		authorship: 'First author',
+		paper: 'https://doi.org/10.1016/j.media.2023.103015',
+		code: 'https://github.com/by-liu/SegLossBias',
+	},
+	{
+		title: 'Class Adaptive Network Calibration',
+		venue: 'CVPR',
+		year: '2023',
+		authorship: 'First author',
+		paper: 'https://arxiv.org/abs/2211.15088',
+		code: 'https://github.com/by-liu/CALS',
+		featured: 4,
+	},
+	{
+		title: 'Calibrating Segmentation Networks with Margin-based Label Smoothing',
+		venue: 'Medical Image Analysis',
+		year: '2023',
+		authorship: 'Second author',
+		paper: 'https://doi.org/10.1016/j.media.2023.102826',
+	},
+	{
+		title: 'GAMMA Challenge: Glaucoma Grading from Multi-Modality Images',
+		venue: 'Medical Image Analysis',
+		year: '2023',
+		authorship: 'Co-author',
+		paper: 'https://doi.org/10.1016/j.media.2023.102938',
+		achievement: '1st place in two MICCAI 2021 GAMMA challenge tasks',
+	},
+	{
+		title: 'The Devil is in the Margin: Margin-based Label Smoothing for Network Calibration',
+		venue: 'CVPR',
+		year: '2022',
+		authorship: 'First author',
+		paper: 'https://arxiv.org/abs/2111.15430',
+		code: 'https://github.com/by-liu/MbLS',
+		featured: 1,
+	},
+	{
+		title: 'Segmentation with Mixed Supervision: Confidence Maximization Helps Knowledge Distillation',
+		venue: 'Medical Image Analysis',
+		year: '2022',
+		authorship: 'First author',
+		paper: 'https://arxiv.org/abs/2109.10902',
+		code: 'https://github.com/by-liu/ConfKD',
+	},
+	{
+		title: 'Furnishing Your Room by What You See: An End-to-End Furniture Set Retrieval Framework with Rich Annotated Benchmark Dataset',
+		venue: 'arXiv',
+		year: '2019',
+		authorship: 'First author',
+		paper: 'https://arxiv.org/abs/1911.09299',
+		dataset: 'https://huggingface.co/datasets/byliu/DeepFurniture',
+		featured: 5,
+	},
+	{
+		title: 'Learning Representative and Discriminative Image Representation by Deep Appearance and Spatial Coding',
+		venue: 'Computer Vision and Image Understanding',
+		year: '2015',
+		authorship: 'First author',
+		paper: 'https://doi.org/10.1016/j.cviu.2015.03.006',
+	},
+	{
+		title: 'Detection Guided Deconvolutional Network for Hierarchical Feature Learning',
+		venue: 'Pattern Recognition',
+		year: '2015',
+		authorship: 'Second author',
+		paper: 'https://doi.org/10.1016/j.patcog.2015.02.002',
+	},
+];
+
+export const experience = [
+	{
+		period: 'Mar. 2023—Present',
+		role: 'Applied Scientist',
+		organization: 'Amazon (AWS AI / Amazon AGI)',
+		location: 'Vancouver, Canada',
+		details: [
+			'Led a synthetic data pipeline producing hundreds of millions of examples for document-understanding VLM post-training.',
+			'Core contributor for VLM post-training, across training tooling, data-mixture design, and evaluation, helping deliver state-of-the-art benchmark results.',
+			'Developed and shipped multimodal capabilities for Amazon Bedrock Data Automation, including structured information extraction and image and figure summarization.',
+		],
+	},
+	{
+		period: 'Nov. 2020—Mar. 2023',
+		role: 'Research Associate',
+		organization: 'École de technologie supérieure (ÉTS)',
+		location: 'Montreal, Canada',
+		details: [
+			'Proposed methods for model calibration and image segmentation, resulting in four first-author papers: two at CVPR and two in Medical Image Analysis.',
+			'Developed eye disease screening solutions with Diagnos.',
+		],
+	},
+	{
+		period: 'May 2018—Mar. 2020',
+		role: 'Algorithm Expert (Tech Lead, Computer Vision)',
+		organization: 'Coohom, Inc.',
+		location: 'Hangzhou, China',
+		details: [
+			'Led the computer vision team building an image-to-3D furniture retrieval system for KuAiDesign, from model training to production serving.',
+			'Created and released DeepFurniture: 24K scenes, 170K furniture annotations, and 20K unique 3D identities, with a published benchmark baseline.',
+		],
+		detailLink: {
+			index: 1,
+			label: 'DeepFurniture',
+			href: 'https://huggingface.co/datasets/byliu/DeepFurniture',
+		},
+	},
+	{
+		period: 'Aug. 2017—Apr. 2018',
+		role: 'Machine Learning Engineer',
+		organization: 'Qihoo 360, Co. Ltd.',
+		location: 'Beijing, China',
+		details: ['Developed recommendation systems for Huajiao, a large-scale live-streaming platform.'],
+	},
+	{
+		period: 'Apr. 2016—Aug. 2017',
+		role: 'Senior Algorithm Engineer',
+		organization: 'Alibaba Group, Inc.',
+		location: 'Hangzhou, China',
+		details: ['Built production OCR systems for business documents and computer-vision components for Alibaba Cloud PAI.'],
+	},
+	{
+		period: 'Jul. 2015—Apr. 2016',
+		role: 'Software Engineer',
+		organization: 'Huawei Technologies, Co. Ltd.',
+		location: 'Nanjing, China',
+		details: ['Developed applied machine-learning solutions for enterprise partners, including China Mobile.'],
+	},
+];
+
+export const education = [
+	{
+		period: '2010—2015',
+		degree: 'Ph.D. in Machine Learning',
+		institution: 'Institute of Automation, Chinese Academy of Sciences',
+	},
+	{
+		period: '2006—2010',
+		degree: 'B.S. in Information Science and Communication Engineering',
+		institution: 'Zhejiang University',
+	},
+];

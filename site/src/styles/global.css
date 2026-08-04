@@ -1,0 +1,76 @@
+:root {
+	color-scheme: light;
+	--bg: #fcfcfb;
+	--surface: #ffffff;
+	--text: #202322;
+	--muted: #5f6663;
+	--faint: #8b918e;
+	--line: #e3e5e3;
+	--accent: #28689a;
+	--accent-soft: #edf4f8;
+	--code-bg: #17201d;
+	--max-width: 1000px;
+	--reading-width: 720px;
+	--radius: 6px;
+	font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-size: 15.5px;
+	line-height: 1.64;
+	-webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration-color: color-mix(in srgb, var(--accent) 36%, transparent); text-underline-offset: 0.18em; }
+a:hover { color: var(--text); }
+img { display: block; max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.container { width: min(calc(100% - 40px), var(--max-width)); margin-inline: auto; }
+.reading-container { width: min(calc(100% - 40px), var(--reading-width)); margin-inline: auto; }
+.eyebrow {
+	margin: 0 0 10px;
+	color: var(--muted);
+	font-size: 0.72rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.text-link { font-weight: 550; text-decoration: none; }
+.prose { font-size: 1.03rem; }
+.prose h2, .prose h3 { margin-top: 2.6em; margin-bottom: 0.65em; letter-spacing: -0.02em; line-height: 1.25; }
+.prose h2 { font-size: 1.6rem; }
+.prose h3 { font-size: 1.24rem; }
+.prose p, .prose ul, .prose ol { margin: 0 0 1.35em; }
+.prose blockquote { margin: 2em 0; padding: 0.25em 0 0.25em 1.25em; border-left: 2px solid var(--accent); color: var(--muted); font-size: 1.08rem; }
+.prose pre { overflow-x: auto; margin: 1.8em 0; padding: 20px; border-radius: var(--radius); background: var(--code-bg) !important; font-size: 0.88rem; line-height: 1.6; }
+.prose :not(pre) > code { padding: 0.15em 0.36em; border-radius: 4px; background: color-mix(in srgb, var(--line) 52%, transparent); font-size: 0.88em; }
+.prose table { display: block; overflow-x: auto; width: 100%; margin: 1.8em 0; border-collapse: collapse; }
+.prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.4rem 0; }
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--bg: #171918;
+		--surface: #1d201f;
+		--text: #e8eae9;
+		--muted: #aeb3b0;
+		--faint: #858b88;
+		--line: #303432;
+		--accent: #85b8dc;
+		--accent-soft: #24323b;
+	}
+}
+@media (max-width: 720px) {
+	.container, .reading-container { width: min(calc(100% - 30px), var(--max-width)); }
+}
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+	* { transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,101 @@
+---
+const links = [
+	{ label: 'Email', href: 'mailto:liubingyuan1988@gmail.com', icon: 'email' },
+	{ label: 'Google Scholar', href: 'https://scholar.google.com/citations?user=jrWPhioAAAAJ', icon: 'scholar' },
+	{ label: 'GitHub', href: 'https://github.com/by-liu', icon: 'github' },
+	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/bingyuan-liu-03bb79107', icon: 'linkedin' },
+	{ label: 'X', href: 'https://x.com/RossBing', icon: 'x' },
+];
+---
+
+<div class="social-links" aria-label="Profiles and contact">
+	<div class="email-control" data-email-control>
+		<button class="icon-button" type="button" aria-label="Email options" aria-expanded="false" aria-controls="email-popover" data-email-trigger>
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM3 6l9 7 9-7" /></svg>
+		</button>
+		<div class="email-popover" id="email-popover" role="dialog" aria-label="Email Bingyuan Liu" hidden data-email-popover>
+			<p>liubingyuan1988@gmail.com</p>
+			<div class="email-actions">
+				<button type="button" data-copy-email>Copy</button>
+				<a href="mailto:liubingyuan1988@gmail.com">Write email</a>
+			</div>
+			<span class="visually-hidden" aria-live="polite" data-copy-status></span>
+		</div>
+	</div>
+	{links.filter((link) => link.icon !== 'email').map((link) => (
+		<a href={link.href} aria-label={link.label} title={link.label} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'me noopener noreferrer' : undefined}>
+			{link.icon === 'scholar' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 9 10-5 10 5-10 5zM6 11.5V16c3.5 3 8.5 3 12 0v-4.5M22 9v7" /></svg>}
+			{link.icon === 'github' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86V21c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" class="filled" /></svg>}
+			{link.icon === 'linkedin' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8v11M5 5v.01M10 19v-7.5M10 15c0-2.4 1.5-4 3.75-4S18 12.5 18 15v4" /></svg>}
+			{link.icon === 'x' && <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4 5 20" /></svg>}
+		</a>
+	))}
+</div>
+
+<style>
+	.social-links { display: flex; align-items: center; gap: 15px; }
+	.email-control { position: relative; display: inline-flex; }
+	a, .icon-button { display: inline-flex; color: var(--muted); text-decoration: none; }
+	a:hover, .icon-button:hover { color: var(--text); }
+	.icon-button { margin: 0; padding: 0; border: 0; background: none; cursor: pointer; }
+	svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+	.filled { fill: currentColor; stroke: none; }
+	.email-popover { position: absolute; top: calc(100% + 11px); left: -10px; z-index: 10; min-width: 250px; padding: 13px 14px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 10px 28px color-mix(in srgb, #000 10%, transparent); }
+	.email-popover[hidden] { display: none; }
+	.email-popover::before { position: absolute; top: -5px; left: 15px; width: 8px; height: 8px; transform: rotate(45deg); border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: var(--surface); content: ""; }
+	.email-popover p { margin: 0; color: var(--text); font-size: 0.83rem; user-select: text; }
+	.email-actions { display: flex; gap: 14px; margin-top: 8px; }
+	.email-actions button, .email-actions a { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; font-size: 0.78rem; cursor: pointer; text-decoration: none; }
+	.email-actions button:hover, .email-actions a:hover { color: var(--text); }
+	.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+	@media (max-width: 360px) {
+		.email-popover { min-width: 235px; }
+	}
+</style>
+
+<script>
+	const email = 'liubingyuan1988@gmail.com';
+
+	for (const control of document.querySelectorAll('[data-email-control]')) {
+		const trigger = control.querySelector('[data-email-trigger]');
+		const popover = control.querySelector('[data-email-popover]');
+		const copyButton = control.querySelector('[data-copy-email]');
+		const status = control.querySelector('[data-copy-status]');
+
+		if (!(trigger instanceof HTMLButtonElement) || !(popover instanceof HTMLElement) || !(copyButton instanceof HTMLButtonElement) || !(status instanceof HTMLElement)) continue;
+
+		const close = () => {
+			popover.hidden = true;
+			trigger.setAttribute('aria-expanded', 'false');
+		};
+
+		trigger.addEventListener('click', () => {
+			const willOpen = popover.hidden;
+			popover.hidden = !willOpen;
+			trigger.setAttribute('aria-expanded', String(willOpen));
+			if (willOpen) copyButton.focus();
+		});
+
+		copyButton.addEventListener('click', async () => {
+			try {
+				await navigator.clipboard.writeText(email);
+				copyButton.textContent = 'Copied';
+				status.textContent = 'Email address copied';
+				window.setTimeout(() => { copyButton.textContent = 'Copy'; }, 1600);
+			} catch {
+				status.textContent = 'Copy failed. Select the email address to copy it manually.';
+			}
+		});
+
+		document.addEventListener('click', (event) => {
+			if (event.target instanceof Node && !control.contains(event.target)) close();
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && !popover.hidden) {
+				close();
+				trigger.focus();
+			}
+		});
+	}
+</script>

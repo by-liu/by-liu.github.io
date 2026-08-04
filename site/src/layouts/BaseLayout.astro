@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props { title?: string; description?: string; image?: string; }
+const {
+	title = 'Bingyuan Liu — AI Researcher and Engineer',
+	description = 'AI researcher and engineer working across LLM/VLM post-training, multimodal understanding, computer vision, and recommender systems.',
+	image = '/images/bingyuan-liu.jpg',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="alternate" type="application/rss+xml" title="Bingyuan Liu — Writing" href="/rss.xml" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={socialImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<Header />
+		<main id="main-content"><slot /></main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 8px 12px; transform: translateY(-160%); border-radius: 6px; background: var(--text); color: var(--bg); }
+	.skip-link:focus { transform: translateY(0); }
+</style>

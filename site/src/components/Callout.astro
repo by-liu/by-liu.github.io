@@ -1,0 +1,10 @@
+---
+interface Props { label?: string; }
+const { label = 'Key idea' } = Astro.props;
+---
+<aside class="callout"><strong>{label}</strong><div><slot /></div></aside>
+<style>
+	.callout { margin: 2em 0; padding: 20px 22px; border-left: 2px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--accent-soft); }
+	strong { display: block; margin-bottom: 5px; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; }
+	div :global(p:last-child) { margin-bottom: 0; }
+</style>
