@@ -3,9 +3,8 @@
 A minimal personal and academic website built with Astro and published at
 [by-liu.github.io](https://by-liu.github.io/).
 
-The active website source is under [`site/`](site/). Files elsewhere in the
-repository belong to the previous static site and are retained during the
-migration, but they are not included in the Astro deployment.
+The website source is under [`site/`](site/). The previous Wowchemy site is
+preserved in Git history and by the `legacy-wowchemy-site` tag.
 
 ## Local development
 
