@@ -30,6 +30,13 @@ const socialImage = new URL(image, Astro.site);
 		<meta property="og:image" content={socialImage} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<title>{title}</title>
+		<script is:inline>
+			try {
+				if (localStorage.getItem('byliu-theme') === 'dark') {
+					document.documentElement.dataset.theme = 'dark';
+				}
+			} catch {}
+		</script>
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>

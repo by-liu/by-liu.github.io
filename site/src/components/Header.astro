@@ -14,18 +14,60 @@ const links = [
 		<nav aria-label="Primary navigation">
 			{links.map((link) => <a class:list={{ active: path === link.href }} href={link.href}>{link.label}</a>)}
 		</nav>
+		<button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode" data-theme-toggle>
+			<svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path>
+			</svg>
+			<svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+			</svg>
+		</button>
 	</div>
 </header>
+
+<script>
+	const themeToggle = document.querySelector('[data-theme-toggle]');
+	if (themeToggle instanceof HTMLButtonElement) {
+		const syncToggle = () => {
+			const dark = document.documentElement.dataset.theme === 'dark';
+			const label = dark ? 'Switch to light mode' : 'Switch to dark mode';
+			themeToggle.setAttribute('aria-label', label);
+			themeToggle.title = label;
+		};
+
+		syncToggle();
+		themeToggle.addEventListener('click', () => {
+			const dark = document.documentElement.dataset.theme === 'dark';
+			if (dark) {
+				delete document.documentElement.dataset.theme;
+				try { localStorage.removeItem('byliu-theme'); } catch {}
+			} else {
+				document.documentElement.dataset.theme = 'dark';
+				try { localStorage.setItem('byliu-theme', 'dark'); } catch {}
+			}
+			syncToggle();
+		});
+	}
+</script>
 
 <style>
 	.site-header { border-bottom: 1px solid var(--line); }
 	.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 60px; }
-	.brand { color: var(--text); font-size: 0.94rem; font-weight: 650; text-decoration: none; }
+	.brand { margin-right: auto; color: var(--text); font-size: 0.94rem; font-weight: 650; text-decoration: none; }
 	nav { display: flex; gap: 24px; }
 	nav a { color: var(--muted); font-size: 0.84rem; text-decoration: none; }
 	nav a:hover, nav a.active { color: var(--text); }
+	.theme-toggle { display: grid; place-items: center; width: 30px; height: 30px; margin-left: 19px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer; }
+	.theme-toggle:hover { background: var(--accent-soft); color: var(--text); }
+	.theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+	.sun-icon { display: none; }
+	:global(:root[data-theme='dark']) .moon-icon { display: none; }
+	:global(:root[data-theme='dark']) .sun-icon { display: block; }
 	@media (max-width: 520px) {
-		.header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 13px 0; }
+		.header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 13px 0; }
+		nav { grid-column: 1 / -1; grid-row: 2; }
+		.theme-toggle { grid-column: 2; grid-row: 1; margin: -5px -7px -2px 0; }
 		nav { gap: 18px; }
 	}
 </style>

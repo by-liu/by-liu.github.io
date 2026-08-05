@@ -54,18 +54,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.4rem 0; }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		color-scheme: dark;
-		--bg: #171918;
-		--surface: #1d201f;
-		--text: #e8eae9;
-		--muted: #aeb3b0;
-		--faint: #858b88;
-		--line: #303432;
-		--accent: #85b8dc;
-		--accent-soft: #24323b;
-	}
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--bg: #171918;
+	--surface: #1d201f;
+	--text: #e8eae9;
+	--muted: #aeb3b0;
+	--faint: #858b88;
+	--line: #303432;
+	--accent: #85b8dc;
+	--accent-soft: #24323b;
 }
 @media (max-width: 720px) {
 	.container, .reading-container { width: min(calc(100% - 30px), var(--max-width)); }
