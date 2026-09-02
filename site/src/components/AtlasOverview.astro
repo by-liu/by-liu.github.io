@@ -80,16 +80,26 @@
 
 <style>
 	.atlas-overview {
+		--diagram-blue: #356f94;
+		--diagram-blue-soft: #eef5f8;
+		--diagram-ochre: #956f3e;
+		--diagram-ochre-soft: #f8f3e9;
 		width: min(calc(100vw - 40px), 1120px);
 		margin: 3em 50% 3.5em;
 		transform: translateX(-50%);
+	}
+	:global(:root[data-theme='dark']) .atlas-overview {
+		--diagram-blue: #84bad8;
+		--diagram-blue-soft: #22323b;
+		--diagram-ochre: #cba66c;
+		--diagram-ochre-soft: #302a21;
 	}
 	.infographic {
 		padding: 32px;
 		border: 1px solid var(--line);
 		border-radius: calc(var(--radius) + 2px);
 		background:
-			linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 66%, transparent), transparent 42%),
+			linear-gradient(135deg, color-mix(in srgb, var(--diagram-blue-soft) 68%, transparent), transparent 42%),
 			var(--surface);
 	}
 	.graphic-header {
@@ -136,7 +146,8 @@
 		border-radius: var(--radius);
 		background: var(--bg);
 	}
-	.documented { border-top: 3px solid color-mix(in srgb, var(--accent) 70%, var(--line)); }
+	.documented { border-top: 3px solid color-mix(in srgb, var(--diagram-blue) 72%, var(--line)); }
+	.documented .panel-number { color: color-mix(in srgb, var(--diagram-blue) 76%, var(--faint)); }
 	.panel h3 {
 		margin: 8px 0 19px;
 		font-size: 1.04rem;
@@ -160,14 +171,14 @@
 	}
 	.flow-arrow {
 		align-self: center;
-		color: var(--faint);
+		color: color-mix(in srgb, var(--diagram-blue) 66%, var(--faint));
 		font-size: 1.25rem;
 	}
-	.model { background: color-mix(in srgb, var(--accent-soft) 54%, var(--bg)); }
+	.model { background: color-mix(in srgb, var(--diagram-blue-soft) 60%, var(--bg)); }
 	.model-stack { display: grid; gap: 7px; }
 	.model-stack span {
 		padding: 9px 10px;
-		border-left: 2px solid var(--accent);
+		border-left: 2px solid var(--diagram-blue);
 		background: var(--surface);
 		color: var(--muted);
 		font-size: 0.76rem;
@@ -194,11 +205,12 @@
 		width: min(64%, 680px);
 		margin: 13px auto 0;
 		padding: 12px 15px;
-		border: 1px dashed var(--faint);
+		border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line));
 		border-radius: var(--radius);
+		background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface));
 		color: var(--muted);
 	}
-	.feedback-arrow { flex: none; color: var(--accent); font-size: 1.5rem; }
+	.feedback-arrow { flex: none; color: var(--diagram-ochre); font-size: 1.5rem; }
 	.feedback p { margin: 0; font-size: 0.75rem; line-height: 1.45; }
 	.feedback strong { color: var(--text); }
 	.foundations {
@@ -211,9 +223,10 @@
 	}
 	.foundations section {
 		padding: 14px 15px;
-		border: 1px dashed var(--line);
+		border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 42%, var(--line));
 		border-radius: var(--radius);
 	}
+	.foundations .foundation-label { color: color-mix(in srgb, var(--diagram-ochre) 72%, var(--faint)); }
 	.foundations section > p:last-child {
 		margin: 6px 0 0;
 		color: var(--muted);
@@ -222,8 +235,8 @@
 	}
 	.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; color: var(--faint); font-size: 0.67rem; }
 	.legend span { display: inline-flex; align-items: center; gap: 7px; }
-	.legend span::before { width: 19px; height: 0; border-top: 2px solid var(--accent); content: ''; }
-	.legend .dashed-key::before { border-top: 2px dashed var(--faint); }
+	.legend span::before { width: 19px; height: 0; border-top: 2px solid var(--diagram-blue); content: ''; }
+	.legend .dashed-key::before { border-top: 2px dashed var(--diagram-ochre); }
 	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 	@media (max-width: 900px) {
 		.main-flow { grid-template-columns: 1fr; }

@@ -30,21 +30,6 @@ const featuredPublications = publications
 			</div>
 		</section>
 
-		<section class="home-section education" aria-labelledby="education-title">
-			<h2 id="education-title">Education</h2>
-			<div class="education-list">
-				{education.map((item) => (
-					<article>
-						<p class="period">{item.period}</p>
-						<div>
-							<h3>{item.institution}</h3>
-							<p>{item.degree}</p>
-						</div>
-					</article>
-				))}
-			</div>
-		</section>
-
 		<section id="experience" class="home-section" aria-labelledby="experience-title">
 			<h2 id="experience-title">Work Experience</h2>
 			<div class="experience-list">
@@ -76,6 +61,23 @@ const featuredPublications = publications
 			</div>
 		</section>
 
+		{writing.length > 0 && (
+			<section class="home-section" aria-labelledby="writing-title">
+				<div class="section-title-row">
+					<h2 id="writing-title">Writing</h2>
+					<a href="/writing/">All writing</a>
+				</div>
+				<ul class="writing-list">
+					{writing.map((post) => (
+						<li>
+							<a href={`/writing/${post.id}/`}>{post.data.title}</a>
+							<time datetime={post.data.date.toISOString()}>{post.data.date.getFullYear()}</time>
+						</li>
+					))}
+				</ul>
+			</section>
+		)}
+
 		<section class="home-section" aria-labelledby="publications-title">
 			<div class="section-title-row">
 				<h2 id="publications-title">Selected publications</h2>
@@ -96,22 +98,20 @@ const featuredPublications = publications
 			</ol>
 		</section>
 
-		{writing.length > 0 && (
-			<section class="home-section" aria-labelledby="writing-title">
-				<div class="section-title-row">
-					<h2 id="writing-title">Writing</h2>
-					<a href="/writing/">All writing</a>
-				</div>
-				<ul class="writing-list">
-					{writing.map((post) => (
-						<li>
-							<a href={`/writing/${post.id}/`}>{post.data.title}</a>
-							<time datetime={post.data.date.toISOString()}>{post.data.date.getFullYear()}</time>
-						</li>
-					))}
-				</ul>
-			</section>
-		)}
+		<section class="home-section education" aria-labelledby="education-title">
+			<h2 id="education-title">Education</h2>
+			<div class="education-list">
+				{education.map((item) => (
+					<article>
+						<p class="period">{item.period}</p>
+						<div>
+							<h3>{item.institution}</h3>
+							<p>{item.degree}</p>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
 
 		<section id="contact" class="home-section contact" aria-labelledby="contact-title">
 			<h2 id="contact-title">Contact</h2>

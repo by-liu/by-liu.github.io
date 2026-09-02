@@ -11,6 +11,7 @@ image: "/images/notes-on-atlas-social.png"
 
 import AtlasArchitecture from '../../components/AtlasArchitecture.astro';
 import AtlasOverview from '../../components/AtlasOverview.astro';
+import AtlasTwoTimescales from '../../components/AtlasTwoTimescales.astro';
 import Callout from '../../components/Callout.astro';
 import Citation from '../../components/Citation.astro';
 import Evidence from '../../components/Evidence.astro';
@@ -82,6 +83,8 @@ The architecture does not need a new head for every named task if the desired ou
 
 - **Across elements**, Atlas predicts the next frame or modality conditioned on the elements already in context.
 - **Within one continuous element**, the model iteratively transports noise toward an RGB or depth latent using rectified flow.
+
+<AtlasTwoTimescales />
 
 This is not pixel-by-pixel autoregression. The unit of causality is closer to a whole image or depth map, while a diffusion-style process produces that element jointly. [Diffusion Transformers](https://arxiv.org/abs/2212.09748)<Citation number={6} />, [Flow Matching](https://arxiv.org/abs/2210.02747)<Citation number={7} />, and [Rectified Flow](https://arxiv.org/abs/2209.03003)<Citation number={8} /> supply the generative machinery; [Next-Frame Diffusion](https://arxiv.org/abs/2506.01380)<Citation number={10} /> supplies a particularly close frame-level autoregressive formulation.
 

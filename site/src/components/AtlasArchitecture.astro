@@ -59,9 +59,19 @@
 
 <style>
 	.atlas-architecture {
+		--diagram-blue: #356f94;
+		--diagram-blue-soft: #eef5f8;
+		--diagram-ochre: #956f3e;
+		--diagram-ochre-soft: #f8f3e9;
 		width: min(calc(100vw - 40px), 1080px);
 		margin: 2.8em 50%;
 		transform: translateX(-50%);
+	}
+	:global(:root[data-theme='dark']) .atlas-architecture {
+		--diagram-blue: #84bad8;
+		--diagram-blue-soft: #22323b;
+		--diagram-ochre: #cba66c;
+		--diagram-ochre-soft: #302a21;
 	}
 	.diagram {
 		display: grid;
@@ -79,13 +89,14 @@
 	.stage small { display: block; margin-top: 9px; color: var(--muted); line-height: 1.45; }
 	.tokens { display: flex; flex-wrap: wrap; gap: 7px; }
 	.tokens span { padding: 4px 7px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.77rem; }
-	.arrow { color: var(--faint); font-size: 1.25rem; }
-	.documented { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+	.arrow { color: color-mix(in srgb, var(--diagram-blue) 62%, var(--faint)); font-size: 1.25rem; }
+	.documented { border-color: color-mix(in srgb, var(--diagram-blue) 58%, var(--line)); background: color-mix(in srgb, var(--diagram-blue-soft) 45%, var(--bg)); }
+	.documented .stage-label { color: color-mix(in srgb, var(--diagram-blue) 72%, var(--faint)); }
 	.feedback, .export { grid-row: 2; margin-top: 4px; color: var(--muted); font-size: 0.8rem; line-height: 1.48; }
-	.feedback { grid-column: 3 / 6; display: flex; gap: 12px; padding: 14px 16px; border: 1px dashed var(--faint); border-radius: var(--radius); }
-	.feedback span { color: var(--accent); font-size: 1.4rem; }
+	.feedback { grid-column: 3 / 6; display: flex; gap: 12px; padding: 14px 16px; border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line)); border-radius: var(--radius); background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface)); }
+	.feedback span { color: var(--diagram-ochre); font-size: 1.4rem; }
 	.feedback p, .export p { margin: 0; }
-	.export { grid-column: 7; padding: 14px 16px; border: 1px dashed var(--faint); border-radius: var(--radius); }
+	.export { grid-column: 7; padding: 14px 16px; border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line)); border-radius: var(--radius); background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface)); }
 	.export p + p { margin-top: 5px; }
 	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 	@media (max-width: 850px) {
