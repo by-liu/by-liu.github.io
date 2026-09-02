@@ -1,0 +1,25 @@
+---
+interface Props { kind: 'documented' | 'inference' | 'open'; title?: string; }
+const { kind, title } = Astro.props;
+const labels = {
+	documented: 'From World Labs',
+	inference: 'Our interpretation',
+	open: 'Still unknown',
+};
+---
+
+<aside class:list={['evidence', `evidence-${kind}`]}>
+	<p class="label">{labels[kind]}</p>
+	{title && <strong>{title}</strong>}
+	<div><slot /></div>
+</aside>
+
+<style>
+	.evidence { margin: 1.8em 0; padding: 17px 19px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+	.evidence-documented { border-left: 3px solid var(--accent); }
+	.evidence-inference { border-left: 3px dashed #9a7440; }
+	.evidence-open { border-left: 3px dotted var(--faint); }
+	.label { margin: 0 0 5px; color: var(--faint); font-size: 0.69rem; font-weight: 680; letter-spacing: 0.09em; text-transform: uppercase; }
+	strong { display: block; margin-bottom: 5px; font-size: 0.96rem; }
+	div :global(p:last-child) { margin-bottom: 0; }
+</style>

@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const showDrafts = import.meta.env.DEV || import.meta.env.PREVIEW_DRAFTS === 'true';
+const posts = (await getCollection('blog', ({ data }) => showDrafts || !data.draft))
 	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
@@ -16,7 +17,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 			{posts.map((post) => (
 				<li>
 					<div>
-						<h2><a href={`/writing/${post.id}/`}>{post.data.title}</a></h2>
+						<h2><a href={`/writing/${post.id}/`}>{post.data.title}</a>{post.data.draft && <span class="draft">Draft</span>}</h2>
 						<p>{post.data.description}</p>
 					</div>
 					<time datetime={post.data.date.toISOString()}>{post.data.date.getFullYear()}</time>
@@ -35,6 +36,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 	li { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding: 22px 0 24px; border-top: 1px solid var(--line); }
 	h2 { margin: 0; font-size: 1.02rem; font-weight: 580; line-height: 1.5; }
 	h2 a { color: var(--text); text-decoration: none; }
+	.draft { margin-left: 9px; color: var(--faint); font-size: 0.66rem; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
 	li p { max-width: 680px; margin: 3px 0 0; color: var(--muted); font-size: 0.88rem; }
 	time { color: var(--faint); font-size: 0.8rem; }
 </style>

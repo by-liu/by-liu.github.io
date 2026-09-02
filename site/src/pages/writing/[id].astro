@@ -3,12 +3,13 @@ import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const showDrafts = import.meta.env.DEV || import.meta.env.PREVIEW_DRAFTS === 'true';
+	const posts = await getCollection('blog', ({ data }) => showDrafts || !data.draft);
 	return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
-<ArticleLayout {...post.data}><Content /></ArticleLayout>
+<ArticleLayout {...post.data} headings={headings}><Content /></ArticleLayout>

@@ -1,0 +1,101 @@
+<figure class="atlas-architecture">
+	<div
+		class="diagram"
+		role="img"
+		aria-label="A reconstructed view of Atlas. Text, posed RGB frames, camera poses, and depth maps enter a shared spatial context. A transformer uses rectified flow to generate the next RGB or depth element. Generated elements return to the context, while depth can be converted to point clouds and Gaussian splats."
+	>
+		<div class="stage inputs">
+			<p class="stage-label">Multimodal sequence</p>
+			<div class="tokens">
+				<span>Text</span>
+				<span>Posed RGB</span>
+				<span>Camera</span>
+				<span>Depth</span>
+			</div>
+		</div>
+
+		<span class="arrow" aria-hidden="true">→</span>
+
+		<div class="stage core documented">
+			<p class="stage-label">Shared spatial context</p>
+			<strong>Autoregressive transformer</strong>
+			<small>Posed frames and cached activations</small>
+		</div>
+
+		<span class="arrow" aria-hidden="true">→</span>
+
+		<div class="stage generation documented">
+			<p class="stage-label">Next element</p>
+			<strong>Rectified-flow denoising</strong>
+			<small>RGB frame or depth map</small>
+		</div>
+
+		<span class="arrow" aria-hidden="true">→</span>
+
+		<div class="stage outputs">
+			<p class="stage-label">Outputs</p>
+			<div class="tokens">
+				<span>Image</span>
+				<span>Video</span>
+				<span>Depth</span>
+				<span>3D</span>
+			</div>
+		</div>
+
+		<div class="feedback inferred">
+			<span aria-hidden="true">↶</span>
+			<p><strong>Generated views return to context</strong><br />Selected views can act as references for later frames.</p>
+		</div>
+
+		<div class="export inferred">
+			<p><strong>Geometry export</strong></p>
+			<p>Depth → point cloud → completed Gaussian splat</p>
+		</div>
+	</div>
+	<figcaption>
+		A working mental model of Atlas based on public information. Solid outlines denote components described by World Labs; dashed outlines denote my interpretation of how those components may fit together.
+	</figcaption>
+</figure>
+
+<style>
+	.atlas-architecture {
+		width: min(calc(100vw - 40px), 1080px);
+		margin: 2.8em 50%;
+		transform: translateX(-50%);
+	}
+	.diagram {
+		display: grid;
+		grid-template-columns: minmax(150px, 0.9fr) auto minmax(190px, 1.1fr) auto minmax(190px, 1.1fr) auto minmax(150px, 0.9fr);
+		gap: 13px;
+		align-items: center;
+		padding: 28px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+	}
+	.stage { min-height: 142px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); }
+	.stage-label { margin: 0 0 13px; color: var(--faint); font-size: 0.69rem; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+	.stage strong { display: block; font-size: 1rem; line-height: 1.35; }
+	.stage small { display: block; margin-top: 9px; color: var(--muted); line-height: 1.45; }
+	.tokens { display: flex; flex-wrap: wrap; gap: 7px; }
+	.tokens span { padding: 4px 7px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 0.77rem; }
+	.arrow { color: var(--faint); font-size: 1.25rem; }
+	.documented { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+	.feedback, .export { grid-row: 2; margin-top: 4px; color: var(--muted); font-size: 0.8rem; line-height: 1.48; }
+	.feedback { grid-column: 3 / 6; display: flex; gap: 12px; padding: 14px 16px; border: 1px dashed var(--faint); border-radius: var(--radius); }
+	.feedback span { color: var(--accent); font-size: 1.4rem; }
+	.feedback p, .export p { margin: 0; }
+	.export { grid-column: 7; padding: 14px 16px; border: 1px dashed var(--faint); border-radius: var(--radius); }
+	.export p + p { margin-top: 5px; }
+	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+	@media (max-width: 850px) {
+		.diagram { grid-template-columns: 1fr; gap: 10px; }
+		.stage { min-height: 0; }
+		.arrow { transform: rotate(90deg); justify-self: center; }
+		.feedback, .export { grid-column: 1; grid-row: auto; }
+	}
+	@media (max-width: 600px) {
+		.atlas-architecture { width: min(calc(100vw - 30px), 1080px); }
+		.diagram { padding: 16px; }
+	}
+</style>

@@ -52,6 +52,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .prose :not(pre) > code { padding: 0.15em 0.36em; border-radius: 4px; background: color-mix(in srgb, var(--line) 52%, transparent); font-size: 0.88em; }
 .prose table { display: block; overflow-x: auto; width: 100%; margin: 1.8em 0; border-collapse: collapse; }
 .prose th, .prose td { padding: 10px 14px; border-bottom: 1px solid var(--line); text-align: left; }
+.prose [id^='ref-'] { scroll-margin-top: 80px; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.4rem 0; }
 
 :root[data-theme='dark'] {

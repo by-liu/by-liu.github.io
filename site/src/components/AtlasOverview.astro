@@ -1,0 +1,241 @@
+<figure class="atlas-overview">
+	<div
+		class="infographic"
+		role="img"
+		aria-label="A high-level interpretation of Atlas. Text, reference images and video, camera poses, and depth maps form a shared spatial context. A multimodal autoregressive transformer uses rectified-flow latent generation to produce images, videos, depth, and explicit 3D for generation, reconstruction, and simulation. Generated views can return to the context. Training data and related research are shown as analytical context, not confirmed implementation details."
+	>
+		<header class="graphic-header">
+			<div>
+				<p class="kicker">A working interpretation</p>
+				<h2>Atlas in one picture</h2>
+			</div>
+			<p class="header-note">One posed, multimodal sequence model<br />across generation, reconstruction, and simulation</p>
+		</header>
+
+		<div class="main-flow">
+			<section class="panel inputs documented">
+				<p class="panel-number">01 · Context</p>
+				<h3>Ground the world</h3>
+				<div class="token-grid">
+					<span>Text</span>
+					<span>Images</span>
+					<span>Video frames</span>
+					<span>Camera poses</span>
+					<span>Depth maps</span>
+				</div>
+				<p class="panel-copy">Each visual observation is positioned in space, turning history into a shared spatial context.</p>
+			</section>
+
+			<span class="flow-arrow" aria-hidden="true">→</span>
+
+			<section class="panel model documented">
+				<p class="panel-number">02 · Model</p>
+				<h3>Predict what comes next</h3>
+				<div class="model-stack">
+					<span>Multimodal sequence</span>
+					<span>Autoregressive transformer</span>
+					<span>Rectified-flow latent generation</span>
+				</div>
+				<p class="memory"><strong>Implicit spatial memory</strong><br />Posed frames + cached activations</p>
+			</section>
+
+			<span class="flow-arrow" aria-hidden="true">→</span>
+
+			<section class="panel outputs documented">
+				<p class="panel-number">03 · Read-outs</p>
+				<h3>Generate, reconstruct, simulate</h3>
+				<div class="output-groups">
+					<p><strong>2D</strong><span>Images · video · novel views</span></p>
+					<p><strong>Geometry</strong><span>Depth · point clouds · 3D splats</span></p>
+					<p><strong>Worlds</strong><span>Camera paths · space-time · real-to-sim</span></p>
+				</div>
+			</section>
+		</div>
+
+		<div class="feedback inferred">
+			<span class="feedback-arrow" aria-hidden="true">↶</span>
+			<p><strong>Autoregressive world building</strong> · Generated views can return to the posed context as references for later frames and denser trajectories.</p>
+		</div>
+
+		<div class="foundations">
+			<section>
+				<p class="foundation-label">Likely learning mixture</p>
+				<p>Images with text · posed multiview · video · RGB with depth · synthetic 3D/4D · generated examples</p>
+			</section>
+			<section>
+				<p class="foundation-label">Research lenses, not a claimed genealogy</p>
+				<p>Transfusion · NFD · CAT3D/4D · ReconFusion · DUSt3R · LVSM · VGGT</p>
+			</section>
+		</div>
+
+		<div class="legend" aria-hidden="true">
+			<span class="solid-key">Described by World Labs</span>
+			<span class="dashed-key">Our interpretation</span>
+		</div>
+	</div>
+	<figcaption>
+		A high level synthesis of public information and related research. This is not World Labs' official architecture or training diagram.
+	</figcaption>
+</figure>
+
+<style>
+	.atlas-overview {
+		width: min(calc(100vw - 40px), 1120px);
+		margin: 3em 50% 3.5em;
+		transform: translateX(-50%);
+	}
+	.infographic {
+		padding: 32px;
+		border: 1px solid var(--line);
+		border-radius: calc(var(--radius) + 2px);
+		background:
+			linear-gradient(135deg, color-mix(in srgb, var(--accent-soft) 66%, transparent), transparent 42%),
+			var(--surface);
+	}
+	.graphic-header {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 28px;
+		padding-bottom: 24px;
+		border-bottom: 1px solid var(--line);
+	}
+	.kicker, .panel-number, .foundation-label {
+		margin: 0;
+		color: var(--faint);
+		font-size: 0.67rem;
+		font-weight: 700;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+	.graphic-header h2 {
+		margin: 5px 0 0;
+		font-size: clamp(1.75rem, 4vw, 2.7rem);
+		letter-spacing: -0.045em;
+		line-height: 1.04;
+	}
+	.header-note {
+		max-width: 350px;
+		margin: 0;
+		color: var(--muted);
+		font-size: 0.86rem;
+		line-height: 1.5;
+		text-align: right;
+	}
+	.main-flow {
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) auto minmax(0, 1.15fr) auto minmax(0, 1fr);
+		gap: 14px;
+		align-items: stretch;
+		margin-top: 24px;
+	}
+	.panel {
+		min-height: 300px;
+		padding: 21px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--bg);
+	}
+	.documented { border-top: 3px solid color-mix(in srgb, var(--accent) 70%, var(--line)); }
+	.panel h3 {
+		margin: 8px 0 19px;
+		font-size: 1.04rem;
+		letter-spacing: -0.02em;
+		line-height: 1.3;
+	}
+	.token-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+	.token-grid span {
+		padding: 5px 8px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		color: var(--muted);
+		font-size: 0.73rem;
+		line-height: 1.2;
+	}
+	.panel-copy {
+		margin: 21px 0 0;
+		color: var(--muted);
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+	.flow-arrow {
+		align-self: center;
+		color: var(--faint);
+		font-size: 1.25rem;
+	}
+	.model { background: color-mix(in srgb, var(--accent-soft) 54%, var(--bg)); }
+	.model-stack { display: grid; gap: 7px; }
+	.model-stack span {
+		padding: 9px 10px;
+		border-left: 2px solid var(--accent);
+		background: var(--surface);
+		color: var(--muted);
+		font-size: 0.76rem;
+		font-weight: 580;
+	}
+	.memory {
+		margin: 17px 0 0;
+		padding-top: 14px;
+		border-top: 1px solid var(--line);
+		color: var(--muted);
+		font-size: 0.76rem;
+		line-height: 1.5;
+	}
+	.memory strong { color: var(--text); }
+	.output-groups { display: grid; gap: 10px; }
+	.output-groups p { margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+	.output-groups p:last-child { border-bottom: 0; }
+	.output-groups strong { display: block; font-size: 0.77rem; }
+	.output-groups span { display: block; margin-top: 2px; color: var(--muted); font-size: 0.73rem; line-height: 1.4; }
+	.feedback {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		width: min(64%, 680px);
+		margin: 13px auto 0;
+		padding: 12px 15px;
+		border: 1px dashed var(--faint);
+		border-radius: var(--radius);
+		color: var(--muted);
+	}
+	.feedback-arrow { flex: none; color: var(--accent); font-size: 1.5rem; }
+	.feedback p { margin: 0; font-size: 0.75rem; line-height: 1.45; }
+	.feedback strong { color: var(--text); }
+	.foundations {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+		margin-top: 22px;
+		padding-top: 20px;
+		border-top: 1px solid var(--line);
+	}
+	.foundations section {
+		padding: 14px 15px;
+		border: 1px dashed var(--line);
+		border-radius: var(--radius);
+	}
+	.foundations section > p:last-child {
+		margin: 6px 0 0;
+		color: var(--muted);
+		font-size: 0.73rem;
+		line-height: 1.5;
+	}
+	.legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; color: var(--faint); font-size: 0.67rem; }
+	.legend span { display: inline-flex; align-items: center; gap: 7px; }
+	.legend span::before { width: 19px; height: 0; border-top: 2px solid var(--accent); content: ''; }
+	.legend .dashed-key::before { border-top: 2px dashed var(--faint); }
+	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+	@media (max-width: 900px) {
+		.main-flow { grid-template-columns: 1fr; }
+		.panel { min-height: 0; }
+		.flow-arrow { justify-self: center; transform: rotate(90deg); }
+		.feedback { width: 100%; }
+	}
+	@media (max-width: 620px) {
+		.atlas-overview { width: min(calc(100vw - 30px), 1120px); }
+		.infographic { padding: 18px; }
+		.graphic-header { align-items: flex-start; flex-direction: column; gap: 12px; }
+		.header-note { text-align: left; }
+		.foundations { grid-template-columns: 1fr; }
+	}
+</style>
