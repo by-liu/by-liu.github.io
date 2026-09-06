@@ -6,7 +6,7 @@
 	>
 		<header class="diagram-header">
 			<p class="eyebrow">A conceptual view</p>
-			<h3>Two generation timescales</h3>
+			<h3>Two nested generation processes</h3>
 		</header>
 
 		<section class="outer-process" aria-label="Autoregression across sequence elements">
@@ -65,10 +65,10 @@
 			</div>
 		</section>
 
-		<p class="takeaway"><strong>Autoregression carries world state forward.</strong> Rectified flow synthesizes each complete image or depth element.</p>
+		<p class="takeaway"><strong>Generation order is separate from scene time.</strong> Each requested view can hold a moment fixed or advance it; rectified flow synthesizes the output.</p>
 	</div>
 	<figcaption>
-		A conceptual reading of Atlas' public description. It separates sequence order from within element denoising; it is not an official implementation diagram.
+		A conceptual reading of Atlas' public description. Neither sequence order nor denoising progress specifies scene time; its encoding in Atlas remains undisclosed.
 	</figcaption>
 </figure>
 

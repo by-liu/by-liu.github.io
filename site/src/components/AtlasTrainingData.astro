@@ -1,0 +1,41 @@
+---
+const observations = [
+	{ source: 'Static multiview captures', relationship: 'Camera viewpoint', signal: 'How one scene appears from different positions' },
+	{ source: 'Fixed-camera dynamic video', relationship: 'Scene content over time', signal: 'How a scene evolves at one viewpoint' },
+	{ source: 'Multiview dynamic sequences', relationship: 'Viewpoint and scene time', signal: 'How to vary either while holding the other fixed' },
+	{ source: 'Images paired with depth', relationship: 'Appearance and geometry', signal: 'How visible surfaces relate to spatial structure' },
+];
+---
+
+<div class="training-data">
+	<div class="column-labels" aria-hidden="true">
+		<span>Observations</span>
+		<span>Relationship</span>
+		<span>Useful learning signal</span>
+	</div>
+	<dl aria-label="Complementary sources of spatial and temporal supervision">
+		{observations.map(({ source, relationship, signal }) => (
+			<div class="observation">
+				<dt>{source}</dt>
+				<dd><span class="field-label">Relationship</span>{relationship}</dd>
+				<dd><span class="field-label">Learning signal</span>{signal}</dd>
+			</div>
+		))}
+	</dl>
+</div>
+
+<style>
+	.training-data { margin: 1.8em 0; }
+	.column-labels, .observation { display: grid; grid-template-columns: 1.05fr 0.95fr 1.45fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+	.column-labels { font-weight: 650; }
+	dl, dt, dd { margin: 0; }
+	.observation { align-items: start; }
+	.field-label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+	@media (max-width: 600px) {
+		.column-labels { display: none; }
+		.observation { grid-template-columns: 1fr; gap: 10px; padding: 20px 0; }
+		.observation:first-child { border-top: 1px solid var(--line); }
+		dt { font-weight: 650; }
+		.field-label { display: block; position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; color: var(--faint); font-size: 0.72rem; }
+	}
+</style>

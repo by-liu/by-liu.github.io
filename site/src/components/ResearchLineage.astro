@@ -27,6 +27,13 @@
 			<a href="https://arxiv.org/abs/2312.14132">DUSt3R</a>
 			<a href="https://arxiv.org/abs/2410.17242">LVSM</a>
 			<a href="https://arxiv.org/abs/2503.11651">VGGT</a>
+			<a href="https://arxiv.org/abs/2410.03825">MonST3R</a>
+		</div>
+		<div class="temporal">
+			<p class="lane-label">Learning camera and time</p>
+			<a href="https://arxiv.org/abs/2407.07860"><strong>4DiM</strong><span>Incomplete supervision</span></a>
+			<a href="https://arxiv.org/abs/2512.25075"><strong>SpaceTimePilot</strong><span>Independent temporal control</span></a>
+			<a href="https://arxiv.org/abs/2512.10940"><strong>OmniView</strong><span>Joint spatial and temporal tasks</span></a>
 		</div>
 	</section>
 	<figcaption>
@@ -70,6 +77,12 @@
 	.center p { color: color-mix(in srgb, var(--diagram-ochre) 78%, var(--faint)); }
 	.center strong { font-size: 1rem; line-height: 1.35; }
 	.center small { margin-top: 9px; color: var(--muted); line-height: 1.45; }
+	.temporal { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px 24px; padding: 20px 0 0; margin-top: 8px; border-top: 1px solid var(--line); }
+	.temporal .lane-label { grid-column: 1 / -1; margin-bottom: 0; }
+	.temporal a { color: var(--diagram-blue); font-size: 0.82rem; text-decoration: none; }
+	.temporal strong { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-color: color-mix(in srgb, var(--diagram-blue) 38%, transparent); }
+	.temporal a:hover strong { text-decoration-color: var(--diagram-blue); }
+	.temporal span { display: block; margin-top: 4px; color: var(--muted); font-size: 0.73rem; line-height: 1.45; }
 	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
 	@media (max-width: 820px) {
 		.lineage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -80,5 +93,6 @@
 		.research-lineage { width: min(calc(100vw - 30px), 1000px); }
 		.lineage { grid-template-columns: 1fr; padding: 16px; }
 		.center { grid-column: 1; }
+		.temporal { grid-template-columns: 1fr; gap: 16px; }
 	}
 </style>

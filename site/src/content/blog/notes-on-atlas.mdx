@@ -1,7 +1,8 @@
 ---
 title: "Notes on Atlas: Exploring a New Paradigm for World Models"
-description: "A personal technical deep dive into World Labs' Atlas, what the team has revealed, the research ideas that may have influenced it, and what its unified approach suggests for world models."
+description: "A personal technical deep dive into World Labs' Atlas: its spatial context, what the team has revealed about training, and the research that helps explain its approach."
 date: 2026-09-01
+updated: 2026-09-05
 type: technical
 tags: [world models, multimodal AI, 3D vision]
 draft: false
@@ -11,6 +12,7 @@ image: "/images/notes-on-atlas-social.png"
 
 import AtlasArchitecture from '../../components/AtlasArchitecture.astro';
 import AtlasOverview from '../../components/AtlasOverview.astro';
+import AtlasTrainingData from '../../components/AtlasTrainingData.astro';
 import AtlasTwoTimescales from '../../components/AtlasTwoTimescales.astro';
 import Callout from '../../components/Callout.astro';
 import Citation from '../../components/Citation.astro';
@@ -21,7 +23,7 @@ World Labs' release of [Atlas](https://www.worldlabs.ai/blog/atlas)<Citation num
 
 It does this by combining text, images, video frames, depth maps, and camera information into what World Labs calls a shared spatial context. From that context, Atlas predicts the next requested view or output. I view this as a potential new paradigm for world models, rather than merely an incremental improvement in video or 3D generation. World Labs deserves enormous credit for turning this direction into a coherent, scalable model and demonstrating it across an unusually broad set of tasks.
 
-At the same time, the announcement leaves many architectural and training details open. This article is my personal attempt to understand Atlas from information shared by World Labs, comments from team members, and related research. It is not an account of Atlas' actual implementation.
+At the same time, many architectural and training details remain open. This is my personal attempt to understand Atlas through World Labs' public material and related research. The team's [September 4 interview with a16z](https://www.youtube.com/watch?v=qn1QDDBnTA0)<Citation number={19} /> adds an important piece: how learning from dynamic observations fits a model whose released examples emphasize spatial consistency. This revision incorporates that discussion while keeping the disclosed design separate from my working interpretation.
 
 <Callout label="Credit and scope">
   Atlas is the work of the World Labs team. The interpretations here are my own and may be incomplete or incorrect. I distinguish documented facts, informed inferences, and open questions throughout the note.
@@ -33,19 +35,13 @@ At the same time, the announcement leaves many architectural and training detail
 
 My present working model is:
 
-> Atlas is a frame-level autoregressive diffusion transformer that treats text, RGB images, camera poses, and depth maps as elements of one typed sequence. Posed observations accumulate into an implicit spatial memory in the transformer's context. Rectified-flow generation predicts the next RGB or depth element, and selected outputs can be fed back as context for longer rollouts or converted into explicit 3D representations.
+> Atlas generates requested views autoregressively from a multimodal spatial context. Text, RGB images, camera poses, and depth maps form a sequence; rectified flow generates each requested continuous output. Observed and selected generated views provide context for subsequent predictions, while explicit geometry is available when an application needs it.
 
-This one sentence combines public facts with interpretation. The rest of the note separates them. A useful reading path is:
-
-1. what World Labs has actually said;
-2. how those facts may fit into an architecture;
-3. what training mixture would make the demonstrated behaviors possible;
-4. which papers provide the closest technical precedents; and
-5. what remains unknown.
+The distinction between **next element** and **next moment** matters. Justin Johnson describes the primitive as [new-view prediction](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=175s): request an observation at a position in space and time, conditioned on a spatial context.<Citation number={19} /> Autoregression determines generation order; it does not require each new view to advance scene time. That distinction connects the architecture to the training questions below.
 
 ## Why Atlas feels different
 
-The most interesting part of Atlas is not any one output. Camera-controlled video, sparse-view reconstruction, monocular depth, Gaussian splats, and image generation all have substantial prior literatures. The breakthrough is treating them as behaviors of one model.
+The most interesting part of Atlas is the breadth of its integration. Camera-controlled video, sparse-view reconstruction, monocular depth, Gaussian splats, and image generation all have substantial prior literatures. Atlas brings these capabilities together around a shared spatial context.
 
 World Labs describes Atlas as a **multimodal autoregressive diffusion transformer pretrained from scratch**. Its modalities include text, images, camera poses, and depth maps; video is represented as a sequence of images. Images and depth maps can be grounded by camera poses. Different tasks therefore become different arrangements of inputs and outputs rather than separate architectures.<Citation number={1} />
 
@@ -59,11 +55,11 @@ That design blurs boundaries computer vision has traditionally maintained: gener
 
 <AtlasArchitecture />
 
-The diagram is intentionally not presented as a recovered implementation. Its central elements are described publicly: the multimodal autoregressive transformer, rectified flow generation, and spatially grounded context. The feedback path and explicit geometry export stages are my attempt to connect those facts with the team's demonstrations and comments.
+The diagram summarizes the publicly described model and its interfaces. The team confirms that selected generated views can be added to context and that outputs can be converted to explicit 3D. The internal memory representation and geometry conversion stages remain open; the diagram does not specify their implementation.
 
-### 1. A typed sequence, not a fixed task graph
+### 1. Tasks as arrangements of sequence elements
 
-The first important abstraction is the **sequence element**. Text, RGB frames, cameras, and depth need different encoders or embeddings, but they can occupy positions in one ordered context. A reconstruction prompt might look conceptually like:
+The first important abstraction is the **sequence element**. Text, RGB frames, cameras, and depth can occupy positions in one ordered context, although their encoders and embeddings have not been disclosed. A reconstruction prompt might look conceptually like:
 
 `text → (camera, RGB) × N → target camera → target RGB/depth`
 
@@ -79,63 +75,78 @@ The architecture does not need a new head for every named task if the desired ou
 
 ### 2. Autoregression outside, diffusion inside
 
-“Autoregressive diffusion transformer” describes two time scales:
+"Autoregressive diffusion transformer" describes two nested generation processes:
 
-- **Across elements**, Atlas predicts the next frame or modality conditioned on the elements already in context.
+- **Across elements**, Atlas predicts the next requested view or modality conditioned on the elements already in context.
 - **Within one continuous element**, the model iteratively transports noise toward an RGB or depth latent using rectified flow.
 
 <AtlasTwoTimescales />
 
 This is not pixel-by-pixel autoregression. The unit of causality is closer to a whole image or depth map, while a diffusion-style process produces that element jointly. [Diffusion Transformers](https://arxiv.org/abs/2212.09748)<Citation number={6} />, [Flow Matching](https://arxiv.org/abs/2210.02747)<Citation number={7} />, and [Rectified Flow](https://arxiv.org/abs/2209.03003)<Citation number={8} /> supply the generative machinery; [Next-Frame Diffusion](https://arxiv.org/abs/2506.01380)<Citation number={10} /> supplies a particularly close frame-level autoregressive formulation.
 
-The distinction helps explain how Atlas can combine sharp images with long, controllable trajectories: diffusion handles high-dimensional frame synthesis, while autoregression carries scene state from one generated element to the next.
+The distinction gives a useful working explanation for combining detailed images with controllable trajectories: diffusion handles frame synthesis, while autoregression lets later outputs depend on earlier context. Neither generation order nor the denoising process is itself the scene's clock.
 
 ### 3. The context behaves like an implicit spatial memory
 
-In [RTFM](https://www.worldlabs.ai/blog/rtfm)<Citation number={2} />, World Labs describes an autoregressive diffusion transformer whose cached activations carry an implicit representation of the world. Atlas makes that idea more geometric: observed and generated images are paired with poses, so the context is not merely a visual history but a **posed history**.
+In [RTFM](https://www.worldlabs.ai/blog/rtfm)<Citation number={2} />, World Labs already describes posed frames as spatial memory and cached activations as an implicit world representation. RTFM retrieves nearby frames to construct a context for each requested viewpoint, a technique the team calls context juggling. Atlas extends the scope of spatial context to its multimodal tasks, but whether it uses the same retrieval policy is undisclosed.
 
-Ben Mildenhall [describes Atlas as next-frame prediction](https://x.com/BenMildenhall/status/2094847509466358124) in which [context aggregates inputs, generated views, and their poses](https://x.com/BenMildenhall/status/2094847511085330890). He also notes that the same model can work with [roughly one, ten, or one hundred frames](https://x.com/BenMildenhall/status/2094847515724238905), and that autoregressive generation can move from [anchor views to keyframes and then denser frames](https://x.com/BenMildenhall/status/2094847519780126810).<Citation number={4} /> These clues suggest that sequence length and frame selection are important control knobs rather than fixed properties of the model.
+Ben Mildenhall's release comments describe [context aggregating inputs, generated views, and their poses](https://x.com/BenMildenhall/status/2094847511085330890), with [variable frame counts](https://x.com/BenMildenhall/status/2094847515724238905) and generation progressing from [anchor views to keyframes and denser frames](https://x.com/BenMildenhall/status/2094847519780126810).<Citation number={4} /> In the interview, he explicitly describes [choosing which views to add to context during generation](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=1220s).<Citation number={19} /> Context selection is therefore part of the user-facing generation process, although the underlying memory management remains unknown.
 
 <Evidence kind="inference" title="World state may live in the KV cache">
-  The most economical interpretation is that Atlas does not maintain a persistent mesh or Gaussian splat while generating. Instead, spatial state is distributed through token activations and the transformer's key-value cache. Explicit geometry can be decoded or reconstructed afterward when an application needs it.
+  RTFM makes a cache-based interpretation plausible for Atlas: spatial information could be distributed through token activations and the transformer's key-value cache. Atlas' exact cache structure and retention policy are not disclosed. Its ability to generate views without requiring a Gaussian-splat output does not by itself reveal every internal representation.
 </Evidence>
 
-This would be a meaningful conceptual shift. Classical 3D systems commit early to an explicit scene representation. Atlas appears to delay that commitment: its native state is multimodal context, and images, depth, point clouds, or splats are different readable projections of that state.
+This suggests a useful way to think about reconstruction and generation together. More observed coverage constrains what the model must preserve; sparse coverage leaves more to its learned prior. A long context can support reconstruction without making every unobserved surface known.
 
 ### 4. Camera and time are related, but not identical
 
-Representing video as images allows one model to learn both spatial viewpoint changes and temporal scene changes. But it also creates an ambiguity: did an object move, or did the camera move?
+Imagine filming a room. Walking around an unchanged room produces viewpoint variation. A person walking through it introduces scene dynamics. A handheld video can contain both, so a pixel's movement alone does not tell us which factor changed.
 
-Explicit camera poses help disentangle those factors. In a static reconstruction sequence, appearance should change according to camera motion while the scene remains fixed. In video, pose and scene time can both change. [CAT4D](https://arxiv.org/abs/2411.18613)<Citation number={15} /> is especially relevant here because it studies controllable generation across both viewpoint and time.
+The distinction becomes concrete when requesting a frozen-time view: move the virtual camera while holding the scene at one moment. The person should remain at that moment's position, rather than disappear or continue walking. Camera pose constrains viewpoint, but separating it from scene evolution also requires suitable temporal information and training. Atlas' precise representation of scene time is still unknown.
 
-The Atlas demos also use different rollout densities. Sparse anchor views can establish global layout; keyframes can specify a path; dense frames can smooth motion. This resembles hierarchical planning in token space, even if the model itself uses one repeated next-element operation.
+[CAT4D](https://arxiv.org/html/2411.18613v1#S3.SS3)<Citation number={15} /> provides a close precedent. Given images captured at different times, it generates novel views at one selected timestamp and reconstructs a static 3D scene from them. This shows how dynamic observations can support a frozen-moment reconstruction. It also raises the training question: how does a model learn which changes to preserve and which to hold fixed?
 
 ### 5. Depth is a native modality and a bridge to 3D
 
-Atlas predicts depth along with RGB.<Citation number={1} /> This matters for more than exporting a point cloud. Joint RGB-depth training supplies a direct geometric learning signal, makes camera supervision more useful, and gives the same transformer a route from semantic generation to metric or projective structure.
+Atlas predicts depth along with RGB.<Citation number={1} /> This matters for more than exporting a point cloud. Learning to predict depth can supply a direct geometric signal and connect appearance to spatial structure. How Atlas pairs RGB and depth during training, and whether it jointly denoises them, remains undisclosed.
 
-The public material shows depth converted to point clouds and then to Gaussian splats. World Labs says Atlas fills remaining gaps and turns the point cloud into a complete splat, but does not say whether the base transformer directly emits splat parameters or a downstream Atlas stage performs that conversion. The conservative reading is therefore: **depth is a native sequence modality. Point clouds and 3D Gaussian splats are explicit representations produced from Atlas outputs and remain part of the broader Atlas system.**
+The public material shows depth converted to point clouds and then to Gaussian splats. In the interview, Johnson explains that [removing the requirement to produce a splat was an explicit design choice](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=674s).<Citation number={19} /> Views can be generated directly; explicit 3D is available when needed. The conservative reading is therefore: **depth is a native sequence modality, while point clouds and Gaussian splats are explicit outputs of the broader Atlas system.** The exact splat-completion stage remains undisclosed.
 
-## How might Atlas have been trained?
+## Learning space and time from data
 
-World Labs states that Atlas was pretrained from scratch and that its performance improves with model and training compute.<Citation number={1} /> It does not disclose parameter count, dataset composition, training stages, loss weights, or compute. The following is my reconstruction of the capabilities that the data and objectives would need to support. It is not a leaked recipe.
+The architecture defines what Atlas can represent. Training must teach it how observations constrain a scene, how that scene changes, and which output a request calls for. The interview gives a clearer outline of this process than the release alone.
 
-### A heterogeneous, spatially normalized mixture
+### Broad pretraining, then a spatial emphasis
 
-No single common dataset contains all the behaviors shown in the release. A plausible mixture would combine:
+<Evidence kind="documented" title="Dynamic pretraining, spatially focused post-training">
+  Johnson says Atlas saw substantial dynamic material during pretraining. Post-training for the released checkpoint emphasized static scenes and spatial movement more than temporal evolution. The broad stages are now described; their datasets, objectives, proportions, and compute remain undisclosed. [Interview, 37:03–37:51](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=2223s).<Citation number={19} />
+</Evidence>
 
-| Data family | Likely supervision | Capability it supports |
-| --- | --- | --- |
-| Paired images and text | captions, image latents | semantics, composition, image generation from text |
-| Posed multiview captures | RGB, intrinsics, extrinsics | novel-view synthesis, reconstruction |
-| Video | ordered frames, estimated or known motion | dynamics, temporal continuity |
-| Paired RGB and depth data | sensor depth or geometric estimates | depth generation, 3D grounding |
-| Synthetic 3D / 4D scenes | perfect pose, depth, time, masks | controllable camera-time disentanglement |
-| Generated pseudo-data | synthesized views and teacher geometry | coverage beyond captured trajectories |
+The rationale is useful even for static outputs. Johnson explains that restricting training to fully static observations is hard to scale. The team instead exposes the model to both static and dynamic material, aiming to let it learn to factor out temporal changes when needed. That is a stated training strategy, not a published ablation proving its effect on Atlas.
 
-The expensive step is likely not only collecting data, but converting these sources into a common sequence grammar: consistent camera conventions, normalized scale where possible, quality filtering, captions, depth confidence, temporal sampling, and modality-presence masks.
+My reading is that the released behavior reflects both what the base model learned and what post-training emphasizes. A spatially focused release can therefore coexist with temporal capabilities learned earlier. It does not establish how much of that capability is reliable or how it is controlled.
 
-[CAT3D](https://arxiv.org/abs/2405.10314)<Citation number={14} /> and [CAT4D](https://arxiv.org/abs/2411.18613)<Citation number={15} /> offer a particularly useful clue. Both use generative models to expand sparse observations into denser view or view-time supervision before reconstructing a scene. Even if Atlas' pipeline differs, these papers show why generated training trajectories can be valuable: real captures rarely provide the camera paths, densities, and dynamic coverage needed for a general world model.
+### Complementary observations, incomplete supervision
+
+The data problem is more specific than collecting enough video. Different observations reveal different relationships:
+
+<AtlasTrainingData />
+
+These are complementary sources of supervision, not Atlas' disclosed dataset inventory. Whether its examples come from monocular captures, synchronized cameras, synthetic scenes, or generated data—and which annotations accompany them—remains unknown.
+
+[CAT4D](https://arxiv.org/html/2411.18613v1#S3.SS2)<Citation number={15} /> makes this strategy concrete. It mixes static multiview images, fixed-camera dynamic videos, synthetic 4D data, and generated augmentations that supply missing camera/time combinations. Those augmentations teach its generator; they are distinct from the novel views it later generates to reconstruct a particular scene.
+
+[4DiM](https://arxiv.org/html/2407.07860v2#S3)<Citation number={20} /> addresses another practical obstacle: many videos lack camera annotations. Its Masked FiLM conditioning treats missing signals as absent rather than confusing them with a valid zero value, allowing posed 3D/4D data and unposed video to train one model. Its video co-training ablation reports better out-of-distribution generalization, with some in-distribution tradeoffs. The experiment supports learning from a broader video corpus; it does not isolate scene motion from the extra diversity and scale.
+
+For Atlas, these papers suggest a useful hypothesis: the training mixture may be organized around which spatial and temporal relationships each example can supervise. They do not tell us that Atlas uses either paper's encoders, datasets, or sampling recipe.
+
+### Separating viewpoint from scene time
+
+Exposure to both static and dynamic scenes does not guarantee independent control. A model might still move an object when asked only to move the camera, or freeze the camera when asked to freeze scene time.
+
+[SpaceTimePilot](https://arxiv.org/html/2512.25075v1#S3.SS2)<Citation number={22} /> tackles this with dedicated time conditioning, temporally remapped training pairs—including reversal and freezing—and synthetic coverage of camera/time combinations. Its ablations show that static-scene co-training alone does not reliably teach time locking. The lesson is that examples must make the distinction learnable, and conditioning must make it expressible.
+
+This sharpens the unresolved question for Atlas: **what supervision teaches it to change viewpoint while holding the scene at a chosen moment?** The interview confirms dynamic training, but leaves the mechanism open. Explicit timestamps, task sampling, generated supervision, and specialized objectives remain possibilities rather than disclosed ingredients.
 
 ### Training one model to produce different outputs
 
@@ -143,19 +154,19 @@ We can understand a possible Atlas training example in three steps:
 
 1. **Give the model some context.** This might be a text description, several posed images, earlier video frames, depth maps, or a mixture of them.
 2. **Choose what it should predict next.** The target might be an image from a new camera position, the next video frame, or a depth map.
-3. **Train it to recover that target.** For an image or depth map, rectified-flow training starts from a noisy version and teaches the model how to move step by step toward the correct output while using the preceding context.
+3. **Train it to recover that target.** A possible rectified-flow objective would mix the target latent with noise and train the model to predict a velocity toward the target, conditioned on the available context. Repeated integration steps produce a sample at inference.
 
 Camera information tells the model where the requested view should be, while modality markers tell it whether the requested output is RGB, depth, or another supported type. Repeating this process across many sequence arrangements could teach the same transformer to perform many tasks without a separate architecture for each one.
 
 This is a conceptual explanation, not Atlas' published objective. The release does not specify its exact loss functions, whether text is ever an output rather than only an input, or how the different training objectives are weighted.
 
-The hard part is balancing the mixture. If 2D image data dominates, geometry may remain weak. If short clean multiview clips dominate, long autoregressive rollouts may drift. If synthetic data dominates, appearance diversity may suffer. “Pretrained from scratch” is therefore significant: World Labs could co-design the representation, attention pattern, task mixture, and scaling behavior instead of attaching spatial modules to a frozen image or video model.
+Balancing these tasks remains an important part of the hypothesis. More diverse observations may help generalization while changing performance on narrower tasks. Pretraining from scratch gives World Labs room to co-design the representation and task mixture; the interview's post-training disclosure suggests another stage at which the balance can shift.
 
 ### Training for its own mistakes
 
 Autoregressive world models face exposure bias: training conditions are usually clean observations, but inference conditions increasingly include the model's imperfect outputs. World Labs researcher Chris Wendler [explicitly identifies drift in long rollouts as an important problem](https://x.com/wendlerch/status/2094874877035761941).<Citation number={5} />
 
-Relevant strategies include corrupting or noising context frames, mixing ground-truth and generated context, varying frame gaps, training on multiple context lengths, and using [Diffusion Forcing](https://arxiv.org/abs/2407.01392)<Citation number={11} />-style per-frame noise levels so the model learns to recover from uncertain history. The anchor → keyframe → dense-frame pattern may also limit error accumulation by periodically regenerating stronger spatial references.
+Relevant strategies include corrupting or noising context frames, mixing ground-truth and generated context, varying frame gaps, training on multiple context lengths, and using [Diffusion Forcing](https://arxiv.org/abs/2407.01392)<Citation number={11} />-style per-frame noise levels so the model learns to recover from uncertain history. The anchor → keyframe → dense-frame pattern may also limit error accumulation by establishing spatial references before generating dense trajectories; this is an inference, not a disclosed guarantee against drift.
 
 <Evidence kind="open" title="The rollout recipe is still unknown">
   Public sources do not reveal whether Atlas uses teacher forcing only, scheduled self-conditioning, on-policy generated rollouts, context corruption, distillation, or a specialized long-horizon objective. This may be one of the most consequential undisclosed parts of the training recipe.
@@ -165,7 +176,7 @@ Relevant strategies include corrupting or noising context frames, mixing ground-
 
 <ResearchLineage />
 
-These papers should not be read as a claim that Atlas copied a particular implementation. They are better understood as converging lines of research that make the Atlas design legible.
+The training discussion draws on papers that make particular mechanisms concrete. The broader research picture helps connect those mechanisms to view synthesis, geometry, and sequence modeling. These are explanatory precedents; I have not found a source establishing that Atlas adopts their exact implementations.
 
 ### Generative view synthesis as a 3D prior
 
@@ -177,11 +188,15 @@ The progression is striking: generation first regularizes reconstruction, then s
 
 [DUSt3R](https://arxiv.org/abs/2312.14132)<Citation number={16} /> reframes multiview geometry as dense pointmap prediction and reduces dependence on a classical calibrated pipeline. [LVSM](https://arxiv.org/abs/2410.17242)<Citation number={17} /> explores transformer-based large view synthesis, while [VGGT](https://arxiv.org/abs/2503.11651)<Citation number={18} /> demonstrates that cameras, depth, point maps, and tracks can emerge from a feed-forward visual geometry transformer.
 
-Atlas differs because it is also generative and autoregressive, but the shared lesson is important: geometry can be represented and predicted by a general transformer, rather than solved only by a hand-composed SfM/MVS system. Atlas' native depth output fits naturally into this lineage.
+[MonST3R](https://arxiv.org/html/2410.03825v2#S3.SS2)<Citation number={21} /> extends this direction to moving scenes by fine-tuning DUSt3R to predict pointmaps for individual timesteps. Its predictor handles dynamics without an explicit motion-field representation. The results also offer a useful limit: some dynamic-scene depth results improve while the static NYU-v2 results worsen relative to DUSt3R. Learning to handle motion is not a guarantee of better geometry on every task.
+
+Atlas differs because it is also generative and autoregressive. These geometry models help explain why direct depth prediction under dynamic observations is plausible, without revealing Atlas' geometry objective or implying that it uses their pointmap representation.
 
 ### One transformer for heterogeneous modalities
 
 [Transfusion](https://arxiv.org/abs/2408.11039)<Citation number={9} /> is the cleanest precedent for putting discrete and continuous modalities into one causal sequence while using language modeling for text and diffusion for images. Atlas adds explicit cameras, depth, and frame-level spatial memory. This makes “multimodal” structural, not simply an image encoder attached to a language model.
+
+There are also precedents for unifying spatial and temporal tasks. [OmniView](https://arxiv.org/html/2512.10940v2#S3)<Citation number={23} /> trains one video diffusion model across static and dynamic view synthesis and camera-controlled generation. Its camera-ray positional conditioning is separated from temporal conditioning. It adapts a video backbone, and its reported setup does not use depth or point-cloud supervision apart from metric scene scale. It is a useful comparison for task unification, while differing from Atlas' described native depth modality and scratch-pretrained autoregressive design.
 
 ### Diffusion as next-frame prediction
 
@@ -189,16 +204,13 @@ Atlas differs because it is also generative and autoregressive, but the shared l
 
 Together these works make the central idea conceptually simple: repeatedly predict the next posed continuous element. The engineering and scaling required to make that idea work are anything but simple.
 
-## What may be genuinely new
+## What stands out about Atlas
 
-The ingredients have precedents; the integration is the breakthrough. My current assessment is that Atlas' novelty lies in four commitments:
+The related work makes a broad claim of first-ever unification difficult to sustain. Several systems already combine view synthesis with temporal generation or reconstruction. What stands out in Atlas is the particular combination described by World Labs: native cameras and depth, a multimodal autoregressive diffusion transformer pretrained from scratch, and a broad set of demonstrated tasks.<Citation number={1} />
 
-1. **A single pretrained sequence model is the product**, rather than a diffusion model surrounded by separate pose, depth, reconstruction, and renderer systems.
-2. **Spatial context is a first-class modality.** Cameras do not merely control an animation after generation; they ground the elements from which the model's world state is formed.
-3. **Generation and reconstruction are reciprocal.** Observations condition generation, generated observations enlarge the reconstructable world, and geometry can condition further generation.
-4. **The design is meant to scale.** World Labs presents Atlas not as a task-specific system but as a base model whose capabilities improve together with data and compute.
+My assessment centers on three commitments. First, the shared spatial context makes observations and generated views useful to the same model. Second, generation can expose images and geometry without requiring every result to pass through an explicit splat representation. Third, the team reports improvements as model size and training compute increase. These are reasons to take the approach seriously, even though the exact recipe and detailed scaling curves remain open.
 
-That is why “new paradigm” feels appropriate to me, with the necessary caution. The paradigm is not that explicit 3D disappears. It is that explicit 3D becomes one interface to a more general learned spatial context.
+That is the sense in which “new paradigm” still feels appropriate to me: a research direction toward a general learned spatial context, with explicit 3D as one useful interface. The interview strengthens the training story behind that direction; it does not remove the need to distinguish demonstrations, explanations, and untested possibilities.
 
 ## What we still do not know
 
@@ -208,6 +220,7 @@ The public material gives us a useful outline, but many details that would defin
 
 - What are the model sizes, context lengths, latent resolutions, and scaling curves?
 - How are camera intrinsics and extrinsics represented, normalized, and given to the transformer?
+- How is scene time represented separately from sequence position and diffusion noise level?
 - Is attention causal between frames and bidirectional within each frame?
 - Do RGB and depth share a tokenizer or VAE, or use separate latent spaces?
 
@@ -215,10 +228,12 @@ The public material gives us a useful outline, but many details that would defin
 
 - How are RGB and depth examples paired or jointly denoised?
 - How much training data comes from images, multiview captures, video, depth, and synthetic scenes?
-- How are the objectives for generation, reconstruction, depth, and temporal prediction balanced?
+- How are missing camera, depth, or temporal annotations handled?
+- Which examples and objectives teach independent control of viewpoint and scene time?
+- How does post-training shift the balance between spatial and temporal capabilities, and what do matched checkpoint evaluations show?
 - Does training include the model's own generated frames to help it recover from mistakes?
 
-### Inference and long term consistency
+### Inference and long-term consistency
 
 - Is the generation process distilled, and how many rectified flow steps are used for each frame?
 - How does Atlas select, retain, or remove context as a generated world becomes larger?
@@ -228,45 +243,57 @@ The public material gives us a useful outline, but many details that would defin
 
 - Is the predicted geometry metric, defined only up to scale, or relative to the camera?
 - Does the base transformer complete Gaussian splats, or does another part of the Atlas system perform that step?
-- How are moving objects, occlusion, physical interactions, and changes in scene structure represented?
+- How are moving objects and occlusion handled when generating a frozen moment or exporting geometry?
+- How far do learned dynamics extend to reliable prediction of physical interactions and responses to actions?
 
 These are not minor implementation details. The answers will help determine how far the approach can extend toward interactive simulation, embodied agents, persistent worlds, and generation in real time.
 
 ## Closing perspective
 
-Atlas is impressive not because it declares classical vision obsolete, but because it reorganizes many of its goals around a powerful new primitive: **generate the next spatially grounded element from a multimodal world context**.
+Atlas reorganizes a broad set of vision tasks around a useful primitive: **generate a requested spatially grounded observation from a multimodal world context**. Its appeal is that observing more of a world and imagining more of it can become parts of one process.
 
-The technical lineage includes generative view synthesis, feedforward geometry, multimodal diffusion, and autoregressive frame prediction. It helps us form hypotheses. But the World Labs team deserves credit for the synthesis, the scale, and the clarity of the demonstration. Making one model behave as image generator, video model, depth predictor, view synthesizer, and reconstruction engine is a substantial research and engineering achievement.
+The interview adds a training perspective to that idea. A model intended to reconstruct a fixed scene can still learn from a changing world. Related research shows concrete ways to make those observations useful, while also showing how easily viewpoint and scene motion can remain entangled. That makes the undisclosed supervision and post-training choices especially interesting.
 
-My strongest conclusion is therefore also the simplest: Atlas suggests that a world model need not choose between being generative and being geometric. It can learn geometry through generation, use geometry to control generation, and expose explicit 3D only when we need it.
+World Labs deserves credit for the scope and coherence of Atlas' demonstration. My central conclusion remains that generation and geometry can reinforce each other. The next question is how reliably that relationship holds as context grows, time advances, and actions begin to change the world.
 
 ## References and further reading
 
 ### World Labs sources
 
-1. <span id="ref-1"></span>World Labs Team, [“Atlas: A World Model for Spatial Intelligence”](https://www.worldlabs.ai/blog/atlas), 2026.
-2. <span id="ref-2"></span>World Labs, [“RTFM: A Real-Time Frame Model”](https://www.worldlabs.ai/blog/rtfm), 2025.
-3. <span id="ref-3"></span>World Labs, [Atlas release thread](https://x.com/theworldlabs/status/2094839756329041984), 2026.
-4. <span id="ref-4"></span>Ben Mildenhall, [Atlas as next-frame prediction](https://x.com/BenMildenhall/status/2094847509466358124), [context as inputs, generated views, and poses](https://x.com/BenMildenhall/status/2094847511085330890), [variable frame counts](https://x.com/BenMildenhall/status/2094847515724238905), [anchor/keyframe/dense generation](https://x.com/BenMildenhall/status/2094847519780126810), and [depth prediction](https://x.com/BenMildenhall/status/2094847521986351131), 2026.
-5. <span id="ref-5"></span>Chris Wendler, [comment on autoregressive drift](https://x.com/wendlerch/status/2094874877035761941), 2026.
+<ol>
+  <li value={1}><span id="ref-1"></span>World Labs Team, [“Atlas: A World Model for Spatial Intelligence”](https://www.worldlabs.ai/blog/atlas), 2026.</li>
+  <li value={2}><span id="ref-2"></span>World Labs, [“RTFM: A Real-Time Frame Model”](https://www.worldlabs.ai/blog/rtfm), 2025.</li>
+  <li value={3}><span id="ref-3"></span>World Labs, [Atlas release thread](https://x.com/theworldlabs/status/2094839756329041984), 2026.</li>
+  <li value={4}><span id="ref-4"></span>Ben Mildenhall, [Atlas as next-frame prediction](https://x.com/BenMildenhall/status/2094847509466358124), [context as inputs, generated views, and poses](https://x.com/BenMildenhall/status/2094847511085330890), [variable frame counts](https://x.com/BenMildenhall/status/2094847515724238905), [anchor/keyframe/dense generation](https://x.com/BenMildenhall/status/2094847519780126810), and [depth prediction](https://x.com/BenMildenhall/status/2094847521986351131), 2026.</li>
+  <li value={5}><span id="ref-5"></span>Chris Wendler, [comment on autoregressive drift](https://x.com/wendlerch/status/2094874877035761941), 2026.</li>
+  <li value={19}><span id="ref-19"></span>a16z, [“Why World Models Could Change Robotics, 3D, and Creativity”](https://www.youtube.com/watch?v=qn1QDDBnTA0), conversation with Fei-Fei Li, Justin Johnson, and Ben Mildenhall, September 4, 2026. Relevant passages: [new-view prediction, 2:55](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=175s); [optional splat output, 11:14](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=674s); [context selection, 20:20](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=1220s); [dynamic data and training stages, 36:17–37:51](https://www.youtube.com/watch?v=qn1QDDBnTA0&t=2177s).</li>
+</ol>
 
 ### Architecture and generative modeling
 
-6. <span id="ref-6"></span>Peebles and Xie, [“Scalable Diffusion Models with Transformers”](https://arxiv.org/abs/2212.09748), 2022.
-7. <span id="ref-7"></span>Lipman et al., [“Flow Matching for Generative Modeling”](https://arxiv.org/abs/2210.02747), 2022.
-8. <span id="ref-8"></span>Liu, Gong, and Liu, [“Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow”](https://arxiv.org/abs/2209.03003), 2022.
-9. <span id="ref-9"></span>Zhou et al., [“Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model”](https://arxiv.org/abs/2408.11039), 2024.
-10. <span id="ref-10"></span>Cheng et al., [“Playing with Transformer at 30+ FPS via Next-Frame Diffusion”](https://arxiv.org/abs/2506.01380), 2025.
-11. <span id="ref-11"></span>Chen et al., [“Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion”](https://arxiv.org/abs/2407.01392), 2024.
+<ol>
+  <li value={6}><span id="ref-6"></span>Peebles and Xie, [“Scalable Diffusion Models with Transformers”](https://arxiv.org/abs/2212.09748), 2022.</li>
+  <li value={7}><span id="ref-7"></span>Lipman et al., [“Flow Matching for Generative Modeling”](https://arxiv.org/abs/2210.02747), 2022.</li>
+  <li value={8}><span id="ref-8"></span>Liu, Gong, and Liu, [“Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow”](https://arxiv.org/abs/2209.03003), 2022.</li>
+  <li value={9}><span id="ref-9"></span>Zhou et al., [“Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model”](https://arxiv.org/abs/2408.11039), 2024.</li>
+  <li value={10}><span id="ref-10"></span>Cheng et al., [“Playing with Transformer at 30+ FPS via Next-Frame Diffusion”](https://arxiv.org/abs/2506.01380), 2025.</li>
+  <li value={11}><span id="ref-11"></span>Chen et al., [“Diffusion Forcing: Next-token Prediction Meets Full-Sequence Diffusion”](https://arxiv.org/abs/2407.01392), 2024.</li>
+</ol>
 
 ### View synthesis, 3D, and 4D
 
-12. <span id="ref-12"></span>Wiles et al., [“SynSin: End-to-end View Synthesis from a Single Image”](https://arxiv.org/abs/1912.08804), 2019.
-13. <span id="ref-13"></span>Wu et al., [“ReconFusion: 3D Reconstruction with Diffusion Priors”](https://arxiv.org/abs/2312.02981), 2023.
-14. <span id="ref-14"></span>Gao et al., [“CAT3D: Create Anything in 3D with Multi-View Diffusion Models”](https://arxiv.org/abs/2405.10314), 2024.
-15. <span id="ref-15"></span>Wu et al., [“CAT4D: Create Anything in 4D with Multi-View Video Diffusion Models”](https://arxiv.org/abs/2411.18613), 2024.
-16. <span id="ref-16"></span>Wang et al., [“DUSt3R: Geometric 3D Vision Made Easy”](https://arxiv.org/abs/2312.14132), 2023.
-17. <span id="ref-17"></span>Jin et al., [“LVSM: A Large View Synthesis Model with Minimal 3D Inductive Bias”](https://arxiv.org/abs/2410.17242), 2024.
-18. <span id="ref-18"></span>Wang et al., [“VGGT: Visual Geometry Grounded Transformer”](https://arxiv.org/abs/2503.11651), 2025.
+<ol>
+  <li value={12}><span id="ref-12"></span>Wiles et al., [“SynSin: End-to-end View Synthesis from a Single Image”](https://arxiv.org/abs/1912.08804), 2019.</li>
+  <li value={13}><span id="ref-13"></span>Wu et al., [“ReconFusion: 3D Reconstruction with Diffusion Priors”](https://arxiv.org/abs/2312.02981), 2023.</li>
+  <li value={14}><span id="ref-14"></span>Gao et al., [“CAT3D: Create Anything in 3D with Multi-View Diffusion Models”](https://arxiv.org/abs/2405.10314), 2024.</li>
+  <li value={15}><span id="ref-15"></span>Wu et al., [“CAT4D: Create Anything in 4D with Multi-View Video Diffusion Models”](https://arxiv.org/abs/2411.18613), 2024.</li>
+  <li value={16}><span id="ref-16"></span>Wang et al., [“DUSt3R: Geometric 3D Vision Made Easy”](https://arxiv.org/abs/2312.14132), 2023.</li>
+  <li value={17}><span id="ref-17"></span>Jin et al., [“LVSM: A Large View Synthesis Model with Minimal 3D Inductive Bias”](https://arxiv.org/abs/2410.17242), 2024.</li>
+  <li value={18}><span id="ref-18"></span>Wang et al., [“VGGT: Visual Geometry Grounded Transformer”](https://arxiv.org/abs/2503.11651), 2025.</li>
+  <li value={20}><span id="ref-20"></span>Watson et al., [“Controlling Space and Time with Diffusion Models” (4DiM)](https://arxiv.org/abs/2407.07860), 2024; ICLR 2025. See Section 3, Section 5.1, and Appendix I for mixed supervision and the video co-training ablation.</li>
+  <li value={21}><span id="ref-21"></span>Zhang et al., [“MonST3R: A Simple Approach for Estimating Geometry in the Presence of Motion”](https://arxiv.org/abs/2410.03825), 2024; ICLR 2025. See Section 3.2 and Table 3 for training and static/dynamic depth results.</li>
+  <li value={22}><span id="ref-22"></span>Huang et al., [“SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time”](https://arxiv.org/abs/2512.25075), 2025; CVPR 2026. See Section 3.2 and Appendix D for temporal conditioning and data ablations.</li>
+  <li value={23}><span id="ref-23"></span>Fan et al., [“OmniView: An All-Seeing Diffusion Model for 3D and 4D View Synthesis”](https://arxiv.org/abs/2512.10940), 2025; revised January 2026. See Sections 3.2–3.3 for conditioning and joint task training.</li>
+</ol>
 
-_This is a living technical note. I will revise the analysis when World Labs publishes more architectural or training detail._
+_This is a living technical note. Updated September 5, 2026 to incorporate the team's interview and research on learning space and time. I will revise the analysis as more architectural and training detail becomes public._

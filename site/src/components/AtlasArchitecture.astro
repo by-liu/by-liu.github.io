@@ -19,7 +19,7 @@
 		<div class="stage core documented">
 			<p class="stage-label">Shared spatial context</p>
 			<strong>Autoregressive transformer</strong>
-			<small>Posed frames and cached activations</small>
+			<small>Observed and selected generated views</small>
 		</div>
 
 		<span class="arrow" aria-hidden="true">→</span>
@@ -42,18 +42,18 @@
 			</div>
 		</div>
 
-		<div class="feedback inferred">
+		<div class="feedback documented">
 			<span aria-hidden="true">↶</span>
 			<p><strong>Generated views return to context</strong><br />Selected views can act as references for later frames.</p>
 		</div>
 
 		<div class="export inferred">
-			<p><strong>Geometry export</strong></p>
+			<p><strong>Optional geometry export</strong></p>
 			<p>Depth → point cloud → completed Gaussian splat</p>
 		</div>
 	</div>
 	<figcaption>
-		A working mental model of Atlas based on public information. Solid outlines denote components described by World Labs; dashed outlines denote my interpretation of how those components may fit together.
+		Publicly described interfaces, with internal memory details left open. Explicit 3D is optional; the dashed export stage has an undisclosed implementation.
 	</figcaption>
 </figure>
 
@@ -93,13 +93,13 @@
 	.documented { border-color: color-mix(in srgb, var(--diagram-blue) 58%, var(--line)); background: color-mix(in srgb, var(--diagram-blue-soft) 45%, var(--bg)); }
 	.documented .stage-label { color: color-mix(in srgb, var(--diagram-blue) 72%, var(--faint)); }
 	.feedback, .export { grid-row: 2; margin-top: 4px; color: var(--muted); font-size: 0.8rem; line-height: 1.48; }
-	.feedback { grid-column: 3 / 6; display: flex; gap: 12px; padding: 14px 16px; border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line)); border-radius: var(--radius); background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface)); }
-	.feedback span { color: var(--diagram-ochre); font-size: 1.4rem; }
+	.feedback { grid-column: 3 / 6; display: flex; gap: 12px; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--diagram-blue) 58%, var(--line)); border-radius: var(--radius); }
+	.feedback span { color: var(--diagram-blue); font-size: 1.4rem; }
 	.feedback p, .export p { margin: 0; }
 	.export { grid-column: 7; padding: 14px 16px; border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line)); border-radius: var(--radius); background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface)); }
 	.export p + p { margin-top: 5px; }
 	figcaption { margin-top: 10px; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-	@media (max-width: 850px) {
+	@media (max-width: 960px) {
 		.diagram { grid-template-columns: 1fr; gap: 10px; }
 		.stage { min-height: 0; }
 		.arrow { transform: rotate(90deg); justify-self: center; }

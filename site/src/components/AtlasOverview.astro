@@ -2,7 +2,7 @@
 	<div
 		class="infographic"
 		role="img"
-		aria-label="A high-level interpretation of Atlas. Text, reference images and video, camera poses, and depth maps form a shared spatial context. A multimodal autoregressive transformer uses rectified-flow latent generation to produce images, videos, depth, and explicit 3D for generation, reconstruction, and simulation. Generated views can return to the context. Training data and related research are shown as analytical context, not confirmed implementation details."
+		aria-label="A high-level interpretation of Atlas. Text, reference images and video, camera poses, and depth maps form a shared spatial context. A multimodal autoregressive transformer uses rectified flow to generate requested views and depth; explicit 3D is an optional output. Selected generated views can return to context. The team describes dynamic pretraining followed by post-training emphasizing spatial tasks. Related papers provide research context, not confirmed implementation details."
 	>
 		<header class="graphic-header">
 			<div>
@@ -30,13 +30,13 @@
 
 			<section class="panel model documented">
 				<p class="panel-number">02 · Model</p>
-				<h3>Predict what comes next</h3>
+				<h3>Generate a requested view</h3>
 				<div class="model-stack">
 					<span>Multimodal sequence</span>
 					<span>Autoregressive transformer</span>
 					<span>Rectified-flow latent generation</span>
 				</div>
-				<p class="memory"><strong>Implicit spatial memory</strong><br />Posed frames + cached activations</p>
+				<p class="memory"><strong>Shared spatial context</strong><br />Observed + selected generated views</p>
 			</section>
 
 			<span class="flow-arrow" aria-hidden="true">→</span>
@@ -52,19 +52,19 @@
 			</section>
 		</div>
 
-		<div class="feedback inferred">
+		<div class="feedback">
 			<span class="feedback-arrow" aria-hidden="true">↶</span>
 			<p><strong>Autoregressive world building</strong> · Generated views can return to the posed context as references for later frames and denser trajectories.</p>
 		</div>
 
 		<div class="foundations">
-			<section>
-				<p class="foundation-label">Likely learning mixture</p>
-				<p>Images with text · posed multiview · video · RGB with depth · synthetic 3D/4D · generated examples</p>
+			<section class="training">
+				<p class="foundation-label">Training described by the team</p>
+				<p>Pretraining with static and dynamic material → post-training emphasizing static scenes and spatial movement</p>
 			</section>
 			<section>
 				<p class="foundation-label">Research lenses, not a claimed genealogy</p>
-				<p>Transfusion · NFD · CAT3D/4D · ReconFusion · DUSt3R · LVSM · VGGT</p>
+				<p>Sequence modeling · generative view synthesis · learning camera and time · feed-forward geometry</p>
 			</section>
 		</div>
 
@@ -205,12 +205,12 @@
 		width: min(64%, 680px);
 		margin: 13px auto 0;
 		padding: 12px 15px;
-		border: 1px dashed color-mix(in srgb, var(--diagram-ochre) 72%, var(--line));
+		border: 1px solid color-mix(in srgb, var(--diagram-blue) 58%, var(--line));
 		border-radius: var(--radius);
-		background: color-mix(in srgb, var(--diagram-ochre-soft) 52%, var(--surface));
+		background: color-mix(in srgb, var(--diagram-blue-soft) 52%, var(--surface));
 		color: var(--muted);
 	}
-	.feedback-arrow { flex: none; color: var(--diagram-ochre); font-size: 1.5rem; }
+	.feedback-arrow { flex: none; color: var(--diagram-blue); font-size: 1.5rem; }
 	.feedback p { margin: 0; font-size: 0.75rem; line-height: 1.45; }
 	.feedback strong { color: var(--text); }
 	.foundations {
@@ -227,6 +227,8 @@
 		border-radius: var(--radius);
 	}
 	.foundations .foundation-label { color: color-mix(in srgb, var(--diagram-ochre) 72%, var(--faint)); }
+	.foundations .training { border-style: solid; border-color: color-mix(in srgb, var(--diagram-blue) 42%, var(--line)); }
+	.foundations .training .foundation-label { color: color-mix(in srgb, var(--diagram-blue) 76%, var(--faint)); }
 	.foundations section > p:last-child {
 		margin: 6px 0 0;
 		color: var(--muted);
